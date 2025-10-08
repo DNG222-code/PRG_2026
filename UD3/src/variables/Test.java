@@ -177,6 +177,45 @@ public class Test {
          *
          */
 
+        //API JAVA
+        /*
+         * -Lectura de dades
+         * -Calculs coplexos
+         * -Tractament d'errors
+         * -Escritura de dades
+         */
+//		double numero = Math.sqrt(16);
+//		System.out.println(numero);
+
+//		LocalTime quinaHoraEs;
+//		quinaHoraEs = LocalTime.now();
+//		System.out.println("Hora actual " + quinaHoraEs);
+//
+//		LocalDate quinDiaES;
+//		quinDiaES = LocalDate.now();
+//		System.out.println("Dia actual " + quinDiaES);
+
+        //OPERADOR TERNARI
+        // ? :
+
+//		boolean arriva = false;
+//		String sortida = arriva ? "Hola" : "Adeu";
+//		System.out.println(sortida);
+
+//		int edat = 18;
+//		String sortida = edat >= 18 ? "Es major d'edat" : "Es menor d'edat";
+//		System.out.println(sortida);
+
+        // 12 - Bon dia
+        // 12 - 18 Bona tarda
+        // 18 - Bona nit
+        int hora = 12;
+        String sortida = hora < 12 ? "Bon dia" :
+                hora <= 18 ? "Bona tarda" :
+                        "Bona nit";
+
+        System.out.println(sortida);
+
     }
 
 }
