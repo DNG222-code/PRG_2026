@@ -7,6 +7,7 @@ public class Ejercicio1 {
         int ladoLargo;
 
 
+
     }
 
 }
