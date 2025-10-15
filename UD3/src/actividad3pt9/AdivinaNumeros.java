@@ -20,19 +20,32 @@ public class AdivinaNumeros {
         System.out.println();
         System.out.println("El juego consiste en adivinar el número aleatorio, de tipo entero, tienes 4 intentos. " +
                 "Buena suerte");
+
         System.out.println("Introduce el primer número: ");
         adivinaNumeros = sc.nextInt();
+
+        // Comprobamos con el operador ternario da el mismo número, el introducido con el aleatorio.
+        aAcertado = adivinaNumeros == numAleatorio ? "Enhorabuena, has acertado." :
+                "Fallaste, prueba otra vez";
+
+        System.out.println(aAcertado);
 
         System.out.println("Introduce el segundo numero: ");
         adivinaNumeros = sc.nextInt();
 
+        System.out.println(aAcertado);
+
         System.out.println("Introduce el tercer numero: ");
         adivinaNumeros = sc.nextInt();
+
+        System.out.println(aAcertado);
 
         System.out.println("Introduce el quarto numero: ");
         adivinaNumeros = sc.nextInt();
 
-//        aAcertado =
+        System.out.println(aAcertado);
+        System.out.println("Ya no tienes más intentos.");
+        System.out.println("El número aleatorio era: " + numAleatorio);
 
     }
 
