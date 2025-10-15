@@ -1,7 +1,6 @@
 package actividad3pt9;
 
 // Importamos la clase Scanner.
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class AdivinaNumeros {
@@ -33,7 +32,7 @@ public class AdivinaNumeros {
         System.out.println("Introduce el quarto numero: ");
         adivinaNumeros = sc.nextInt();
 
-        aAcertado =
+//        aAcertado =
 
     }
 
