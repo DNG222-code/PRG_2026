@@ -29,7 +29,7 @@ public class NotaMitja {
         notaTercerTrimestre = sc.nextInt();
 
         // Calculem la mitjana amb decimal per l'expedient acadèmic.
-        mitjanaExpedientAcademic = (double) (notaPrimerTrimestre + notaSegonTrimestre + notaTercerTrimestre) / 3;
+        mitjanaExpedientAcademic = (notaPrimerTrimestre + notaSegonTrimestre + notaTercerTrimestre) / 3;
 
         // Calculem la mitjana pel butlletí.
         mitjanaButlleti = (int) mitjanaExpedientAcademic;
