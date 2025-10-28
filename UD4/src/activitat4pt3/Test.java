@@ -7,55 +7,87 @@ public class Test {
     public static void main(String[] args) {
 
         // Declaramos las variables.
-        Scanner sc = new Scanner(System.in); // Scanner.
+        Scanner sc = new Scanner(System.in);
 
-        // Variable para numero.
-        int numero = 0;
-
-        // Variable para el switch por meses.
-        String mes;
-
-        // Variable para saber el año.
+        int numero = 0; // Número del mes.
+        String mes = ""; // Inicializamos para evitar error de compilación.
+        int dias = 0;
         int anyo;
-
-        // Variable para saber si es bisioesto o no.
         boolean esBisiesto;
 
-        // Pedimos al usuario el número.
-        System.out.println("Introduce un número del 1 al 12, si no introduces sobre ese rango, dará error.");
-        numero = sc.nextInt(); // Guardamos el número via Scanner en la variable numero.
+        // Pedimos el número del mes.
+        System.out.println("Introduce un número del 1 al 12 (representa el mes):");
+        numero = sc.nextInt();
 
-        // Pedimos al usuario el año.
-        System.out.println("Introduce un número, que puede ser el año.");
+        // Pedimos el año.
+        System.out.println("Introduce el año:");
         anyo = sc.nextInt();
 
-        // Hacemos la condición con el switch, para saber el mes.
-        mes = switch (numero) {
-            case 1 -> "Enero";
-            case 2 -> "Febrero";
-            case 3 -> "Marzo";
-            case 4 -> "Abril";
-            case 5 -> "Mayo";
-            case 6 -> "Junio";
-            case 7 -> "Julio";
-            case 8 -> "Agosto";
-            case 9 -> "Septiembre";
-            case 10 -> "Octubre";
-            case 11 -> "Noviembre";
-            case 12 -> "Diciembre";
+        // Determinamos si es bisiesto.
+        esBisiesto = (anyo % 4 == 0 && anyo % 100 != 0) || (anyo % 400 == 0);
 
-            // Mostramos un error si la opción es incorrecta.
-            default -> "ERROR: Tiene que ser del 1 al 12.";
-
-        };
-
-        // Mostramos por pantalla el valor de la opción introducida.
-        System.out.println("El numero " + numero + " es: " + mes);
-
-        if (anyo % 4 == 0) {
-            esBisiesto = true;
-
+        // Determinamos el mes y los días.
+        switch (numero) {
+            case 1 -> {
+                mes = "Enero";
+                dias = 31;
+            }
+            case 2 -> {
+                mes = "Febrero";
+                dias = esBisiesto ? 29 : 28;
+            }
+            case 3 -> {
+                mes = "Marzo";
+                dias = 31;
+            }
+            case 4 -> {
+                mes = "Abril";
+                dias = 30;
+            }
+            case 5 -> {
+                mes = "Mayo";
+                dias = 31;
+            }
+            case 6 -> {
+                mes = "Junio";
+                dias = 30;
+            }
+            case 7 -> {
+                mes = "Julio";
+                dias = 31;
+            }
+            case 8 -> {
+                mes = "Agosto";
+                dias = 31;
+            }
+            case 9 -> {
+                mes = "Septiembre";
+                dias = 30;
+            }
+            case 10 -> {
+                mes = "Octubre";
+                dias = 31;
+            }
+            case 11 -> {
+                mes = "Noviembre";
+                dias = 30;
+            }
+            case 12 -> {
+                mes = "Diciembre";
+                dias = 31;
+            }
+            default -> {
+                System.out.println("ERROR: Tiene que ser un número del 1 al 12.");
+                return;
+            }
         }
+
+        // Mostramos los resultados.
+        System.out.println("El número " + numero + " corresponde a " + mes + ".");
+        System.out.println(mes + " tiene " + dias + " días.");
+        System.out.println("El año " + anyo + (esBisiesto ? " es bisiesto." : " no es bisiesto."));
+
+        sc.close(); // Cerramos el Scanner.
 
     }
 
