@@ -48,6 +48,16 @@ public class Tesoro {
         }
         System.out.println("Total de cofres encontrados: " + contador);
         System.out.println("Posiciones de los cofres: ");
+        for (int i = 0; i < mapa.length; i++) {
+            for (int j = 0; j < mapa[i].length; j++) {
+                if (mapa[i][j] == 1) {
+                    System.out.println("- Fila: " + i + ", Columna: " + j);
+
+                }
+
+            }
+
+        }
 
     }
 
