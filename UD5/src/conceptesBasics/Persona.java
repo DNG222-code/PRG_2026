@@ -3,20 +3,42 @@ package conceptesBasics;
 public class Persona {
 
     // Atributs
-    String nom;
-    int edad;
-    double pes;
-    final String DNI;
+    private String nom;
+    private int edad;
+    private double pes;
+//    final String DNI;
+    private boolean enferma;
 
     // Constructors
-    public Persona(String nom, int edad, double pes, String DNI) {
-        this.nom = nom;
-        this.edad = edad;
-        this.pes = pes;
-        this.DNI = DNI;
+//    public Persona(String nom, int edad, double pes) {
+//        this.nom = nom;
+//        this.edad = edad;
+//        this.pes = pes;
+//
+//    }
+    public Persona() {
+//        this("Pere");
+//        this.edad = 25;
+//        this.pes = 75.0;
+        this(true);
 
     }
 
+    public Persona(boolean enferma) {
+        this.nom = "John Doe";
+        this.edad = 25;
+        this.pes = 75.0;
+        this.enferma = enferma;
+
+    }
+
+    public Persona(String nom) {
+        this.nom = nom;
+        this.edad = 25;
+        this.pes = 75.0;
+        this.enferma = false;
+
+    }
 
     public void saludar() {
         System.out.println("Hola " + this.nom);
@@ -36,7 +58,8 @@ public class Persona {
     }
 
     public String info() {
-        return "Nom: " + this.aCapitals() + ", Edad: " + this.edad + ", Pes: " + this.pes + ", DNI: " + this.DNI;
+        return "Nom: " + this.aCapitals() + ", Edad: " + this.edad + ", Pes: " + this.pes +
+                (this.enferma ? ", Enferma" : "");
 
     }
 
@@ -48,6 +71,49 @@ public class Persona {
 
     public static void contador() {
         System.out.println("Aquest mètode és estàtic!");
+
+    }
+
+    // GETTERS Y SETTERS
+    // Para lectura
+    public double getPes() {
+        return this.pes;
+
+    }
+
+    // Para escritura
+    public void setPes(double pes) {
+        this.pes = pes;
+
+    }
+
+    public String getNom() {
+        return nom;
+
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+
+    }
+
+    public int getEdad() {
+        return edad;
+
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+
+    }
+
+    public boolean isEnferma() {
+        return enferma;
+
+    }
+
+    public void setEnferma(boolean enferma) {
+        this.enferma = enferma;
 
     }
 

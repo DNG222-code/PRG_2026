@@ -2,9 +2,9 @@ package conceptesBasics;
 
 public class Test {
 
-    Test t = new Test(); // Con la t, se pueden usar métodos NO estáticos.
-
     public static void main(String[] args) {
+
+        Test t = new Test(); // Con la t, se pueden usar métodos NO estáticos.
 
         // PROGRAMACIÓ ORIENTADA A OBJECTES - POO
 
@@ -23,16 +23,23 @@ public class Test {
         //
         // }
 
-        Persona p = new Persona("John", 25, 75.0, "X0000000");
-        Persona p2 = new Persona("Juan", 25, 75.0, "X0000000");
-        Persona p3 = new Persona("Paco", 25, 75.0, "X0000000");
+        Persona p = new Persona();
+        Persona p2 = new Persona();
+        Persona p3 = new Persona();
         Persona p4 = p; // Apuntan al mismo sitio.
 
-        System.out.println(p4.info());
+        Persona p5 = new Persona(true);
+        Persona p6 = new Persona("Juan");
+
+//        System.out.println(p4.info());
 
         // Apuntan al mismo sitio.
-        System.out.println(p);
-        System.out.println(p4);
+//        System.out.println(p);
+//        System.out.println(p4);
+//        System.out.println(p5.enferma);
+//        System.out.println(p6.nom);
+
+        System.out.println(p.info());
 
 //        p.nom = "David";
 //        p.edad = 20;
@@ -62,7 +69,24 @@ public class Test {
 //
 //        Persona.contador(); // Se pone el nombre de la clase directamente para los métodos estáticos.
 
-        System.out.println(p.info());
+//        System.out.println(p.info());
+        System.out.println(p.getPes()); // Solo puedo leerlo.
+        p.setPes(90); // Puedo modificarlo.
+        System.out.println(p.getPes());
+
+        System.out.println(p.getNom());
+        p.setNom("David");
+        System.out.println("Se ha modificado el nombre a: ");
+        System.out.println(p.getNom());
+
+//        p.saludar();
+
+        t.hola();
+
+    }
+
+    public void hola() {
+        System.out.println("Hola");
 
     }
 
