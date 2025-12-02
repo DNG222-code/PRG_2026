@@ -9,19 +9,32 @@ public class BarcoPirata {
     private final int capacidadTripulacion;
     private int contadorPiratas = 0;
     private int tesoroTotal;
-    private int contadorBarcoPirata = 0;
+    private static int contadorBarcoPirata = 0;
     private String capitaBarcoPirata;
 
     // Constructores
     // 1.
-    BarcoPirata(String nombreBarco, int capacidadTripulacion, int capacidadTripulacion1) {
-        this.capacidadTripulacion = capacidadTripulacion1;
-        getNombreBarco(nombreBarco);
-        getCapacidadTripulacion(capacidadTripulacion);
+    public BarcoPirata(String nombreBarco, int capacidadTripulacion) {
+        this.setNombreBarco(nombreBarco);
+        this.capacidadTripulacion = capacidadTripulacion;
+
+        contadorBarcoPirata++;
+        System.out.println("Nombre: " + getNombreBarco(nombreBarco));
+        System.out.println("Capacidad: " + getCapacidadTripulacion(capacidadTripulacion));
     }
 
     // 2.
-    BarcoPirata(int capacidadTripulacion) {
+    public BarcoPirata(String nombreBarco) {
+        this.setNombreBarco(nombreBarco);
+        this.capacidadTripulacion = 10;
+
+        contadorBarcoPirata++;
+        System.out.println("Nombre: " + getNombreBarco(nombreBarco));
+        System.out.println("Cantidad de piratas reclutados: " + contadorBarcoPirata);
+    }
+
+    // 3.
+    public BarcoPirata(int capacidadTripulacion) {
         this.capacidadTripulacion = capacidadTripulacion;
     }
 
