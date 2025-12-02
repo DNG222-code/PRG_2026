@@ -1,46 +1,50 @@
 package activitat5pt1pt6;
 
-import activitat5pt1pt4.Pirata;
-
-public class BarcoPirata {
+public class BarcoPirata extends Pirata {
 
     private String nombreBarco;
     private Pirata[] tripulacion;
     private final int capacidadTripulacion;
     private int contadorPiratas = 0;
-    private int tesoroTotal;
+    private double tesoroTotal = 0;
     private static int contadorBarcoPirata = 0;
-    private String capitaBarcoPirata;
+    private String capitanBarcoPirata;
 
-    // Constructores
-    // 1.
+    // ============================================================
+    // 1. Constructor con nombre y capacidad
+    // ============================================================
     public BarcoPirata(String nombreBarco, int capacidadTripulacion) {
-        this.setNombreBarco(nombreBarco);
+        this.nombreBarco = nombreBarco;
         this.capacidadTripulacion = capacidadTripulacion;
+        this.tripulacion = new Pirata[capacidadTripulacion];
 
         contadorBarcoPirata++;
-        System.out.println("Nombre: " + getNombreBarco(nombreBarco));
-        System.out.println("Capacidad: " + getCapacidadTripulacion(capacidadTripulacion));
+
+        System.out.println("Barco instanciado:");
+        System.out.println("El Barco Pirata " + nombreBarco +
+                ", con capacidad para " + capacidadTripulacion + " piratas, está disponible");
+        System.out.println("Cantidad de barcos en La Flota de Monkey Island: " + contadorBarcoPirata);
     }
 
-    // 2.
+    // ============================================================
+    // 2. Constructor con nombre, capacidad por defecto
+    // ============================================================
     public BarcoPirata(String nombreBarco) {
-        this.setNombreBarco(nombreBarco);
-        this.capacidadTripulacion = 10;
-
-        contadorBarcoPirata++;
-        System.out.println("Nombre: " + getNombreBarco(nombreBarco));
-        System.out.println("Cantidad de piratas reclutados: " + contadorBarcoPirata);
+        this(nombreBarco, 5); // capacidad por defecto
     }
 
-    // 3.
-    public BarcoPirata(int capacidadTripulacion) {
-        this.capacidadTripulacion = capacidadTripulacion;
+    // ============================================================
+    // 3. Constructor por defecto sin parámetros
+    // ============================================================
+    public BarcoPirata() {
+        this("Barco sin nombre", 3);
     }
 
-    // Getters y Setters
-    public String getNombreBarco(String nombreBarco) {
-        return this.nombreBarco;
+    // ============================================================
+    // GETTERS y SETTERS
+    // ============================================================
+    public String getNombreBarco() {
+        return nombreBarco;
     }
 
     public void setNombreBarco(String nombreBarco) {
@@ -51,43 +55,43 @@ public class BarcoPirata {
         return tripulacion;
     }
 
-    public void setTripulacion(Pirata[] tripulacion) {
-        this.tripulacion = tripulacion;
-    }
-
-    public int getCapacidadTripulacion(int capacidadTripulacion) {
-        return this.capacidadTripulacion;
+    public int getCapacidadTripulacion() {
+        return capacidadTripulacion;
     }
 
     public int getContadorPiratas() {
         return contadorPiratas;
     }
 
-    public void setContadorPiratas(int contadorPiratas) {
-        this.contadorPiratas = contadorPiratas;
-    }
-
-    public int getTesoroTotal() {
+    public double getTesoroTotal() {
         return tesoroTotal;
     }
 
-    public void setTesoroTotal(int tesoroTotal) {
-        this.tesoroTotal = tesoroTotal;
-    }
-
-    public int getContadorBarcoPirata() {
+    public static int getContadorBarcoPirata() {
         return contadorBarcoPirata;
     }
 
-    public void setContadorBarcoPirata(int contadorBarcoPirata) {
-        this.contadorBarcoPirata = contadorBarcoPirata;
+    public String getCapitanBarcoPirata() {
+        return capitanBarcoPirata;
     }
 
-    public String getCapitaBarcoPirata() {
-        return capitaBarcoPirata;
-    }
-
-    public void setCapitaBarcoPirata(String capitaBarcoPirata) {
-        this.capitaBarcoPirata = capitaBarcoPirata;
+    public void imprimirPirata() {
+        System.out.println("***** DATOS DEL BARCO PIRATA *****");
+        System.out.println();
+        System.out.println("Nombre: " + nombreBarco);
+        System.out.println("Capacidad: " + capacidadTripulacion);
+        System.out.println("Cantidad de Piratas reclutados: " + contadorPiratas);
+        System.out.println("El capitán es: " + capitanBarcoPirata + "\n");
+        System.out.println("Tripulación: " + "\n");
+        System.out.println(capitanBarcoPirata + " aporta: " + tesoroTotal + " doblones.");
+        for (Pirata p : tripulacion) {
+            if (p != null) {
+                System.out.println(p + " aporta: " + cantidadTesoro + " doblones.");
+            } else {
+                System.out.println("No hay piratas en el barco");
+            }
+        }
+        System.out.println();
+        System.out.println("Tesoro total: " + tesoroTotal + " doblones.");
     }
 }
