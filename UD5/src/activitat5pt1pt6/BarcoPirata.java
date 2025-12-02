@@ -75,6 +75,9 @@ public class BarcoPirata extends Pirata {
         return capitanBarcoPirata;
     }
 
+    // ==========================================================
+    // Método para imprimir los datos del barco pirata.
+    // ==========================================================
     public void imprimirPirata() {
         System.out.println("***** DATOS DEL BARCO PIRATA *****");
         System.out.println();
@@ -86,12 +89,72 @@ public class BarcoPirata extends Pirata {
         System.out.println(capitanBarcoPirata + " aporta: " + tesoroTotal + " doblones.");
         for (Pirata p : tripulacion) {
             if (p != null) {
-                System.out.println(p + " aporta: " + cantidadTesoro + " doblones.");
+                System.out.println(p + " aporta: " + getCantidadTesoro() + " doblones.");
             } else {
                 System.out.println("No hay piratas en el barco");
             }
         }
         System.out.println();
         System.out.println("Tesoro total: " + tesoroTotal + " doblones.");
+    }
+
+    // Método reclutar piratas
+    public void reclutarPiratas(Pirata pirata) {
+        // ==========================================================
+        // 1. Comprobar si hay espacio
+        // ==========================================================
+        if (contadorPiratas >= capacidadTripulacion) {
+            System.out.println(pirata.getNombre() + " no puede ser reclutado, en "
+                    + nombreBarco + " no caben más piratas");
+            return;
+        }
+
+        // ==========================================================
+        // 2. Añadir pirata a la tripulación
+        // ==========================================================
+        tripulacion[contadorPiratas] = pirata;
+        contadorPiratas++;
+
+        // ==========================================================
+        // 3. Cambiar el barco del pirata
+        // ==========================================================
+        pirata.setNombreBarco(nombreBarco);
+
+        // ==========================================================
+        // 4. Sumar tesoro del pirata al barco
+        // ==========================================================
+        tesoroTotal += pirata.getCantidadTesoro();
+
+        // ==========================================================
+        // 5. El primer pirata es el capitán
+        // ==========================================================
+        if (contadorPiratas == 1) {
+            pirata.setEsCapitan(true);
+            capitanBarcoPirata = pirata.getNombre();
+        } else {
+            pirata.setEsCapitan(false);
+        }
+
+        // ==========================================================
+        // 6. Mensaje de reclutamiento
+        // ==========================================================
+        System.out.println(pirata.getNombre() + " ha sido reclutado en " + nombreBarco);
+    }
+
+    // ==========================================================
+    // Método buscar pirata en barco
+    // ==========================================================
+    public static void buscarPirataEnBarco(String nombrePirata, BarcoPirata barco) {
+        for (int i = 0; i < barco.contadorPiratas; i++) {
+            Pirata p = barco.tripulacion[i];
+
+            if (p.getNombre().equalsIgnoreCase(nombrePirata)) {
+                System.out.println(nombrePirata + " se encuentra en la posición "
+                        + i + " de la tripulación de " + barco.nombreBarco);
+                return;
+            }
+        }
+
+        System.out.println(nombrePirata + " NO se encuentra en " + barco.nombreBarco);
     }
 }

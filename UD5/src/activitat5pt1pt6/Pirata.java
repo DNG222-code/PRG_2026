@@ -8,7 +8,7 @@ package activitat5pt1pt6;
     // Cambiamos el resto de atributos a privados
     private int puntosSalud;
     private int botellasGrog;
-    public double cantidadTesoro;
+    private double cantidadTesoro;
     private boolean esCapitan;
 
     // Creamos métodos estáticos
@@ -49,11 +49,11 @@ package activitat5pt1pt6;
     // d.
     public Pirata(String nombre) {
         this.nombre = nombre;
-        String nombreBarco = "Barco Pirata";
-        int puntosSalud = 100;
-        int botellasGrog = 10;
-        double cantidadTesoro = 0.0;
-        boolean esCapitan = false;
+        this.nombreBarco = "Barco Pirata";
+        this.puntosSalud = 100;
+        this.botellasGrog = 10;
+        this.cantidadTesoro = 0.0;
+        this.esCapitan = false;
     }
 
     // Constructor vacio
@@ -169,5 +169,13 @@ package activitat5pt1pt6;
 
     public void setEsCapitan(boolean esCapitan) {
         this.esCapitan = esCapitan;
+    }
+
+    public double getCantidadTesoro() {
+        return cantidadTesoro;
+    }
+
+    public void setCantidadTesoro(double cantidadTesoro) {
+        this.cantidadTesoro = cantidadTesoro;
     }
 }
