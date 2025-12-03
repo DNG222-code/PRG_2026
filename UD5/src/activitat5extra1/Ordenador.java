@@ -8,26 +8,36 @@ public class Ordenador {
     private String procesador;
     private String placaBase;
     private String tarjetaGrafica;
-    private int cantidadVRam;
-    private int memoriaRam;
+    private String cantidadVRam;
+    private String memoriaRam;
+    private String cantidadRam;
     private String SSD;
-    private int capacidadSSD;
-    private String precio;
+    private String capacidadSSD;
+    private double precio;
     private boolean esDisponible;
 
     // ========================================
     // Constructores.
     // ========================================
-    public Ordenador(String modelo, String procesador, String placaBase, String tarjetaGrafica, int cantidadVRam, int memoriaRam, String SSD, int capacidadSSD, String precio, boolean esDisponible) {
+
+    public Ordenador(String modelo, String procesador, String placaBase,
+                     String tarjetaGrafica, String memoriaRam, String SSD,
+                     double precio, boolean esDisponible) {
+
         this.modelo = modelo;
         this.procesador = procesador;
         this.placaBase = placaBase;
         this.tarjetaGrafica = tarjetaGrafica;
-        this.cantidadVRam = cantidadVRam;
         this.memoriaRam = memoriaRam;
         this.SSD = SSD;
-        this.capacidadSSD = capacidadSSD;
         this.precio = precio;
+        this.esDisponible = esDisponible;
+    }
+
+    public Ordenador(String cantidadVRam, String cantidadRam, String capacidadSSD) {
+        this.setCantidadVRam(cantidadVRam);
+        this.setCantidadRam(cantidadRam);
+        this.setCapacidadSSD(capacidadSSD);
     }
 
     // ========================================
@@ -35,6 +45,25 @@ public class Ordenador {
     // ========================================
     public String getModelo() {
         return modelo;
+    }
+
+    // ========================================
+    // Método estático que almacene los 3 Objetos.
+    // ========================================
+    public static void mostrarOrdenadores(Ordenador o1, Ordenador o2, Ordenador o3) {
+        Ordenador[] ordenadores = {o1, o2, o3};
+
+        for (Ordenador o : ordenadores) {
+            if (o1.isEsDisponible()) {
+                System.out.println(o.getModelo());
+            } else if (o2.isEsDisponible()) {
+                System.out.println(o.getModelo());
+            } else if (o3.isEsDisponible()) {
+                System.out.println(o.getModelo());
+            } else {
+                System.out.println("Lo sentimos, no está disponible.");
+            }
+        }
     }
 
     public void setModelo(String modelo) {
@@ -65,20 +94,28 @@ public class Ordenador {
         this.tarjetaGrafica = tarjetaGrafica;
     }
 
-    public int getCantidadVRam() {
+    public String getCantidadVRam() {
         return cantidadVRam;
     }
 
-    public void setCantidadVRam(int cantidadVRam) {
+    public void setCantidadVRam(String cantidadVRam) {
         this.cantidadVRam = cantidadVRam;
     }
 
-    public int getMemoriaRam() {
+    public String getMemoriaRam() {
         return memoriaRam;
     }
 
-    public void setMemoriaRam(int memoriaRam) {
+    public void setMemoriaRam(String memoriaRam) {
         this.memoriaRam = memoriaRam;
+    }
+
+    public String getCantidadRam() {
+        return cantidadRam;
+    }
+
+    public void setCantidadRam(String cantidadRam) {
+        this.cantidadRam = cantidadRam;
     }
 
     public String getSSD() {
@@ -89,19 +126,19 @@ public class Ordenador {
         this.SSD = SSD;
     }
 
-    public int getCapacidadSSD() {
+    public String getCapacidadSSD() {
         return capacidadSSD;
     }
 
-    public void setCapacidadSSD(int capacidadSSD) {
+    public void setCapacidadSSD(String capacidadSSD) {
         this.capacidadSSD = capacidadSSD;
     }
 
-    public String getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
