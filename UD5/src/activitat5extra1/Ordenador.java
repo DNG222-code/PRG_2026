@@ -1,6 +1,7 @@
 package activitat5extra1;
 
 public class Ordenador {
+
     // ========================================
     // Atributos.
     // ========================================
@@ -19,7 +20,6 @@ public class Ordenador {
     // ========================================
     // Constructores.
     // ========================================
-
     public Ordenador(String modelo, String procesador, String placaBase,
                      String tarjetaGrafica, String memoriaRam, String SSD,
                      double precio, boolean esDisponible) {
@@ -41,29 +41,34 @@ public class Ordenador {
     }
 
     // ========================================
-    // Getters & Setters
-    // ========================================
-    public String getModelo() {
-        return modelo;
-    }
-
-    // ========================================
     // Método estático que almacene los 3 Objetos.
     // ========================================
     public static void mostrarOrdenadores(Ordenador o1, Ordenador o2, Ordenador o3) {
-        Ordenador[] ordenadores = {o1, o2, o3};
+        Ordenador[] ordenadores = {o1, o2, o3}; // Guardamos los 3 objetos en un array.
 
+        // Iteramos sobre el array y mostramos los modelos de los ordenadores disponibles.
         for (Ordenador o : ordenadores) {
-            if (o1.isEsDisponible()) {
-                System.out.println(o.getModelo());
-            } else if (o2.isEsDisponible()) {
-                System.out.println(o.getModelo());
-            } else if (o3.isEsDisponible()) {
-                System.out.println(o.getModelo());
-            } else {
-                System.out.println("Lo sentimos, no está disponible.");
+            // Comprobamos si el objeto ACTUAL (o) está disponible
+            if (o.isEsDisponible()) {
+                    System.out.println("Modelo: " + o.getModelo());
+                    System.out.println("Procesador: " + o.getProcesador());
+                    System.out.println("Placa base: " + o.getPlacaBase());
+                    System.out.println("Tarjeta Gráfica: " + o.getTarjetaGrafica());
+                    System.out.println("Memoria RAM: " + o.getMemoriaRam());
+                    System.out.println("Almacenamiento SSD: " + o.getSSD());
+                    System.out.println("Precio: " + o.getPrecio() + "\n");
+                } else {
+                    // Este bloque 'else' se ejecuta cuando isEsDisponible() es FALSE
+                    System.out.println(o.getModelo() + " **** Lo sentimos, no está disponible." + "\n");
+                }
             }
         }
+
+        // ========================================
+        // Getters & Setters
+        // ========================================
+    public String getModelo() {
+        return modelo;
     }
 
     public void setModelo(String modelo) {

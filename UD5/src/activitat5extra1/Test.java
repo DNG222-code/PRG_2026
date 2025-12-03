@@ -19,12 +19,13 @@ public class Test {
 
         Ordenador o2pt1 = new Ordenador("16 GB", "32 GB", "2TB");
 
-        Ordenador o3 = new Ordenador("Ordenador Sobremesa PcCom Imperial", "AMD Ryzen 7 7800X3D",
+        Ordenador o3 = new Ordenador("Portátil PcCom Imperial", "AMD Ryzen 7 7800X3D",
                 "MSI PRO B650-S WIFI", "RTX 4070 Super", "Acer Predator Vesta II RGB DDR5", "WD BLACK SN770",
-                1869.0, true);
+                1869.0, false);
 
         Ordenador o3pt1 = new Ordenador("16 GB", "32 GB", "2TB");
 
+        // Llamamos al método estático mostrarOrdenadores y le pasamos los 3 objetos como parámetros.
         Ordenador.mostrarOrdenadores(o1, o2, o3);
 
     }
