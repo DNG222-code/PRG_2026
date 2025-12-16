@@ -20,8 +20,6 @@ public class Spiderman extends Superheroes {
     public boolean equals(Object o) {
         Spiderman su = (Spiderman) o;
 
-        boolean esIgual;
-
-        return esIgual = su.equals(this.getNivelPoder());
+        return su.equals(this.getNivelPoder());
     }
 }
