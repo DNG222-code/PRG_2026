@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class SumaDigitos {
 
@@ -7,15 +7,24 @@ public class SumaDigitos {
         Scanner sc = new Scanner(System.in);
 
         int[] numeros = new int[9];
-        int numero = 1;
-        
-        do {
+
+        while (true) {
+            // Leer 9 números (si aparece un negativo, salir)
             for (int i = 0; i < numeros.length; i++) {
-                if (numero >= 0 && numero <= 10) {
-                    System.out.println("Introduce un número: ");
-                    numero = sc.nextInt();
+                int n = sc.nextInt();
+                if (n < 0) {
+                    sc.close();
+                    return; // termina el programa
                 }
+                numeros[i] = n;
             }
-        } while(numero > 0 && numero <= 10);
+
+            // Sumar los 9 números
+            int suma = 0;
+            for (int num : numeros) {
+                suma += num;
+                System.out.println(suma);
+            }
+        }
     }
 }
