@@ -1,7 +1,9 @@
-// Esquema de la entrada: fin de la entrada
+package prueba;
+
 import java.util.Scanner;
 
 public class HolaMundo {
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
