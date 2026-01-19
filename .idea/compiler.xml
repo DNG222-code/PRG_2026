@@ -2,7 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="UD6" target="22" />
       <module name="UD6.main" target="22" />
       <module name="UD6.test" target="22" />
     </bytecodeTargetLevel>
