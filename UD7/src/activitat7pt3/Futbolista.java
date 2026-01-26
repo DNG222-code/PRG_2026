@@ -1,6 +1,6 @@
 package activitat7pt3;
 
-public class Futbolista implements Comparable<Futbolista> {
+public class Futbolista {
     // Atributos del futbolista
     String dni;
     String nombre;
@@ -20,26 +20,26 @@ public class Futbolista implements Comparable<Futbolista> {
         return dni + "  " + nombre + "  " + edad + "  " + numeroGoles;
     }
 
-    // Implementación de Comparable para definir el orden natural
-    @Override
-    public int compareTo(Futbolista o) {
-        // Primero comparamos por NOMBRE
-        int resultadoNombre = this.nombre.compareTo(o.nombre);
+//    // Implementación de Comparable para definir el orden natural
+//    @Override
+//    public int compareTo(Futbolista o) {
+//        // Primero comparamos por NOMBRE
+//        int resultadoNombre = this.nombre.compareTo(o.nombre);
+//
+//        // Si el resultado no es 0, significa que los nombres son diferentes
+//        if (resultadoNombre != 0) {
+//            return resultadoNombre;
+//        }
+//
+//        // Si los nombres son iguales, comparamos por EDAD
+//        return Integer.compare(this.edad, o.edad);
+//    }
 
-        // Si el resultado no es 0, significa que los nombres son diferentes
-        if (resultadoNombre != 0) {
-            return resultadoNombre;
-        }
-
-        // Si los nombres son iguales, comparamos por EDAD
-        return Integer.compare(this.edad, o.edad);
-    }
-
-    // Método equals.
-    @Override
-    public boolean equals(Object o) {
-        Futbolista f = (Futbolista) o;
-
-        return f.dni.equals(this.dni);
-    }
+//    // Método equals.
+//    @Override
+//    public boolean equals(Object o) {
+//        Futbolista f = (Futbolista) o;
+//
+//        return f.dni.equals(this.dni);
+//    }
 }

@@ -1,6 +1,6 @@
 package activitat7pt2;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Test {
 
