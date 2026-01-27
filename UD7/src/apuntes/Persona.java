@@ -11,16 +11,21 @@ public class Persona implements Comparable<Persona> {
         this.DNI = DNI;
     }
 
+//    @Override
+//    public int compareTo(Persona p) {
+//        int cDNI = this.DNI.compareTo(p.DNI);
+//        int cNom = this.nom.compareTo(p.nom);
+//
+//        return (
+//            cDNI != 0
+//                ? cDNI
+//                : cNom
+//        );
+//    }
+
     @Override
     public int compareTo(Persona p) {
-        int cDNI = this.DNI.compareTo(p.DNI);
-        int cNom = this.nom.compareTo(p.nom);
-
-        return (
-            cDNI != 0
-                ? cDNI
-                : cNom
-        );
+        return Integer.compare(this.edat, p.edat);
     }
 
     @Override

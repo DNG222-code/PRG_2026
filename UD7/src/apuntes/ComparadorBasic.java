@@ -8,10 +8,10 @@ public class ComparadorBasic implements Comparator<Persona> {
         int ordreDNI = o1.DNI.compareTo(o2.DNI);
         int ordreNom = o1.nom.compareTo(o2.nom);
 
-        return (
-            ordreDNI != 0
-                ? ordreDNI
-                : ordreNom
-        );
+        if (ordreDNI != 0) {
+            return ordreDNI;
+        } else {
+            return ordreNom;
+        }
     }
 }
