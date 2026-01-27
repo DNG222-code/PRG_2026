@@ -14,6 +14,8 @@ public class Llamada implements Comparable<Llamada> {
     // Implementamos el método del comparable.
     @Override
     public int compareTo(Llamada o) {
+
+
         return 0;
     }
 }
