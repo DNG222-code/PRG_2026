@@ -2,7 +2,7 @@ package activitat7pt2;
 
 import java.util.*;
 
-public class Futbolista implements Comparator {
+public class Futbolista implements Comparable<Futbolista> {
     // Atributos del futbolista
     String dni;
     String nombre;
@@ -19,22 +19,29 @@ public class Futbolista implements Comparator {
 
     // Método toString.
     public String toString() {
-        return nombre + "  " + edad + "  " + numeroGoles;
+        return dni + "  " + nombre + "  " + edad + "  " + numeroGoles;
     }
 
-    // Método compare, de Comparator.
+    // Implementación de Comparable para definir el orden natural
     @Override
-    public int compare(Object o1, Object o2) {
-        Futbolista f1 = (Futbolista) o1;
-        Futbolista f2 = (Futbolista) o2;
+    public int compareTo(Futbolista o) {
+        // Primero comparamos por NOMBRE
+        int resultadoNombre = this.nombre.compareTo(o.nombre);
 
-        return f1.nombre.compareTo(f2.nombre);
+        // Si el resultado no es 0, significa que los nombres son diferentes
+        if (resultadoNombre != 0) {
+            return resultadoNombre;
+        }
+
+        // Si los nombres son iguales, comparamos por EDAD
+        return Integer.compare(this.edad, o.edad);
     }
 
     // Método equals.
+    @Override
     public boolean equals(Object o) {
         Futbolista f = (Futbolista) o;
 
-        return f.equals(this.dni.equals(f.dni));
+        return f.dni.equals(this.dni);
     }
 }
