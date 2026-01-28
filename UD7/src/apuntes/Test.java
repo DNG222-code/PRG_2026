@@ -11,9 +11,9 @@ public class Test {
         };
 
         // COMPARABLE
-//        System.out.println(Arrays.toString(persones));
-//        Arrays.sort(persones);
-//        System.out.println(Arrays.toString(persones));
+        System.out.println(Arrays.toString(persones));
+        Arrays.sort(persones);
+        System.out.println(Arrays.toString(persones));
 
         // COMPARATOR
 //        Comparator<Persona> compEdat = new ComparadorPerEdat();
