@@ -1,4 +1,4 @@
-package provesWriter;
+package apuntes.provesWriter;
 
 import java.io.*;
 

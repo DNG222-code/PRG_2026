@@ -1,4 +1,4 @@
-package provesText;
+package apuntes.provesText;
 
 import java.io.*;
 import java.util.*;

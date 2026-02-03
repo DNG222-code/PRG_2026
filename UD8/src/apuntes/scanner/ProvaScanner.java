@@ -1,4 +1,4 @@
-package scanner;
+package apuntes.scanner;
 
 import java.io.*;
 import java.util.*;

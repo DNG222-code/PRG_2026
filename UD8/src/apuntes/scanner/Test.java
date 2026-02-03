@@ -1,4 +1,4 @@
-package scanner;
+package apuntes.scanner;
 
 import java.io.*;
 import java.util.*;
@@ -12,14 +12,14 @@ public class Test {
 
         String nombreFichero = "UD8/fixers/ficherosReales";
 
-        FileReader fr = null;
-        BufferedReader br = null;
+//        FileReader fr = null;
+//        BufferedReader br = null;
 //        Scanner sc = new Scanner(numerosCadena);
-        try {
+        try (BufferedReader br = new BufferedReader(new FileReader(nombreFichero))) {
             Scanner sc = new Scanner(nombreFichero);
 
-            fr = new FileReader(nombreFichero);
-            br = new BufferedReader(fr);
+//            fr = new FileReader(nombreFichero);
+//            br = new BufferedReader(fr);
 
             String linia = br.readLine();
             String[] numeros = linia.split(", ");
@@ -34,8 +34,6 @@ public class Test {
 
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
-        } finally {
-            System.out.println("Hay un error.");
         }
 //        System.out.println("Introduzca 5 números enteros: ");
 //        for (int i = 0; i < numero.length; i++) {

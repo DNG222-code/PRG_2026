@@ -34,15 +34,19 @@ public class TratamientoFicheros {
             System.out.println("El fichero existe. Vamos a enseñarlo.");
         } else {
             System.out.println("El fichero no existe. Pondremos por defecto prova.txt");
-            try {
-                String linea = "";
-            } catch (IOException e) {
-                System.out.println("Error, no se encuntra el fichero: " + e.getMessage());
-            }
+            escribirFichero();
         }
     }
 
     public void escribirFichero() {
+        try {
+            String linea = "";
 
+            FileWriter fw = new FileWriter(f);
+
+            fw.write("Hemos creado un fichero prova.txt");
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
