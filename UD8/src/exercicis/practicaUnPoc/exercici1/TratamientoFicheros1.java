@@ -3,7 +3,7 @@ package exercicis.practicaUnPoc.exercici1;
 import java.io.*;
 import java.util.*;
 
-public class TratamientoFicheros {
+public class TratamientoFicheros1 {
 
     String path;
     String nombreFichero;
