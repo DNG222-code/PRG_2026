@@ -1,4 +1,4 @@
-package exercicis.practicaUnPoc;
+package exercicis.practicaUnPoc.exercici1;
 
 import java.io.*;
 import java.util.*;
@@ -40,15 +40,14 @@ public class TratamientoFicheros {
             }
         } else {
             System.out.println("El fichero no existe. Pondremos por defecto prova.txt");
-            escribirFichero();
+            escribirFichero(); // Llamamos el método de escribirFichero(), para crearlo.
         }
     }
 
     public void escribirFichero() {
+        // Creamos el fichero si no está creado.
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));
-
-            bw.write("Hemos creado un fichero prova.txt");
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }

@@ -1,4 +1,4 @@
-package exercicis.practicaUnPoc;
+package exercicis.practicaUnPoc.exercici1;
 
 public class Test {
 
