@@ -20,18 +20,24 @@ public class TratamientoFicheros {
         nombreFichero = sc.nextLine();
 
         // Pedimos la ruta del fichero al usuario.
-        System.out.print("Introduzca la ruta del fichero, según su Sistema: ");
+        System.out.print("Introduzca la ruta del fichero, según su Sistema de archivos: ");
         path = sc.nextLine();
 
         // Comprobamos si existe el fichero, si no le pondremos prova.txt.
         if (f.exists()) {
             try {
-                FileReader fr = new FileReader(f);
+                BufferedReader br = new BufferedReader(new FileReader(f));
+
+                System.out.println("El fichero existe. Vamos a enseñarlo.");
+                String linea = ""; // Declaramos la variable para leer el fichero.
+                // Recorremos el fichero con la variable creada.
+                while (linea != null) {
+                    System.out.println(linea);
+                    linea = br.readLine();
+                }
             } catch (IOException e) {
                 System.out.println("Error, no se encuntra el fichero: " + e.getMessage());
             }
-
-            System.out.println("El fichero existe. Vamos a enseñarlo.");
         } else {
             System.out.println("El fichero no existe. Pondremos por defecto prova.txt");
             escribirFichero();
@@ -40,11 +46,9 @@ public class TratamientoFicheros {
 
     public void escribirFichero() {
         try {
-            String linea = "";
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
 
-            FileWriter fw = new FileWriter(f);
-
-            fw.write("Hemos creado un fichero prova.txt");
+            bw.write("Hemos creado un fichero prova.txt");
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }

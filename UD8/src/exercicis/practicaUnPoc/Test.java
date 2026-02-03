@@ -4,9 +4,9 @@ public class Test {
 
     public static void main(String[] args) {
 
+        // Instanciamos la clase TratamientoFicheros.
         TratamientoFicheros tf = new TratamientoFicheros();
-        tf.leerFichero();
-        tf.escribirFichero();
+        tf.leerFichero(); // Enseñamos el fichero por consola.
 
     }
 }
