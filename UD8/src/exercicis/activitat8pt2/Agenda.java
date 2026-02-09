@@ -48,13 +48,16 @@ public class Agenda {
                 // Creamos una variable para saber cuantas veces va a introducir datos.
                 int veces;
 
-                System.out.println("Introduzca las veces que desea introducir datos: " + "\n");
-                veces = sc.nextInt();
-
                 // Creamos un array para guardar los datos del contacto.
                 String[] datos;
 
                 do {
+                    System.out.println("Introduzca las veces que desea introducir datos: ");
+                    veces = sc.nextInt();
+
+                } while (veces <= 0 && veces >= 20);
+
+                for (int i = 0; i < veces; i++) {
                     // Pedimos al usuario los datos del nuevo contacto.
                     System.out.print("Introduce el nombre: ");
                     nombre = sc.next();
@@ -68,10 +71,9 @@ public class Agenda {
 
                     datos = new String[]{nombre, apellidos, Integer.toString(telefono)};
 
-                } while (veces >= 0 || veces <= 20);
-
-                // Llamamos al método para leer el fichero y le pasamos los atributos.
-                leerYEscribirFichero(datos);
+                    // Llamamos al método para leer el fichero y le pasamos los atributos.
+                    tratarFichero(datos);
+                }
 
             } else if (opcion == 2) {
 
@@ -85,9 +87,7 @@ public class Agenda {
     }
 
     // Método para leer el fichero.
-    public void leerYEscribirFichero(String[] datos) {
-
-        datos = new String[]{nombre, apellidos, Integer.toString(telefono)};
+    public void tratarFichero(String[] datos) {
 
         // Hacemos el tratamiento de error.
         try {
@@ -102,19 +102,40 @@ public class Agenda {
                 linea = br.readLine();
             }
 
-            // Mostramos al usuario que se háya leído bien el fichero.
-            System.out.println("Se ha leído el fichero correctamente. " + "\n");
-
-            for (String dato : datos) {
-                bw.write(dato + "\n");
-            }
-
-            System.out.println("Se ha añadido un nuevo contacto al fichero. " + "\n");
+            escribirFichero(datos);
 
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage()
                     + "\n"
                     + "Crea el fichero agenda.txt para que vaya el código.");
+        }
+    }
+
+    public void escribirFichero(String[] datos) {
+
+        try {
+            // Escribimos en el fichero.
+            bw = new BufferedWriter(new FileWriter(f, true));
+
+            // Mostramos al usuario que se háya leído bien el fichero.
+            System.out.println("Se ha leído el fichero correctamente. " + "\n");
+
+            bw.write(String.format("Nombre:    %s%nApellidos: %s%nTelefono:  %s%n%n",
+                    datos[0], datos[1], datos[2]));
+
+            System.out.println("Se ha añadido un nuevo contacto al fichero. " + "\n");
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    System.out.println("Error al cerrar el fichero: " + e.getMessage());
+                }
+            }
         }
     }
 }
