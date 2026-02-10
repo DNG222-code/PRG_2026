@@ -13,7 +13,6 @@ public class Agenda {
     String apellidos;
     int telefono;
 
-
     // Declaramos los atributos para el fichero.
     File f = new File("UD8/fixers/agenda.txt");
 
@@ -28,62 +27,67 @@ public class Agenda {
         // Declaramos la opcion.
         int opcion;
 
-        // do-while hasta que presióne el número 4 para guardar y salir.
-        do {
-            // Mostramos el menú al usuario.
-            System.out.println("----------------");
-            System.out.println("----- MENÚ -----");
-            System.out.println("----------------" + "\n");
+        // Un control de error por si ponemos un caracter que no toca.
+        try {
+            // do-while hasta que presióne el número 4 para guardar y salir.
+            do {
+                // Mostramos el menú al usuario.
+                System.out.println("\n" + "----------------");
+                System.out.println("----- MENÚ -----");
+                System.out.println("----------------" + "\n");
 
-            System.out.println("1. Nuevo contacto. ");
-            System.out.println("2. Buscar nombre. ");
-            System.out.println("3. Mostrar todos. ");
-            System.out.println("4. Salir. " + "\n");
+                System.out.println("1. Nuevo contacto. ");
+                System.out.println("2. Buscar nombre. ");
+                System.out.println("3. Mostrar todos. ");
+                System.out.println("4. Salir. " + "\n");
 
-            System.out.print("Selecciona una opcion: ");
+                System.out.print("Selecciona una opcion: ");
+                opcion = sc.nextInt(); // Guardamos la opcion seleccionada.
+                sc.nextLine(); // Salto de scanner.
 
-            opcion = sc.nextInt(); // Guardamos la opcion seleccionada.
+                if (opcion == 1) {
+                    // Creamos una variable para saber cuantas veces va a introducir datos.
+                    int veces;
 
-            if (opcion == 1) {
-                // Creamos una variable para saber cuantas veces va a introducir datos.
-                int veces;
+                    // Creamos un array para guardar los datos del contacto.
+                    String[] datos;
 
-                // Creamos un array para guardar los datos del contacto.
-                String[] datos;
+                    do {
+                        System.out.println("Introduzca las veces que desea introducir datos: ");
+                        veces = sc.nextInt();
 
-                do {
-                    System.out.println("Introduzca las veces que desea introducir datos: ");
-                    veces = sc.nextInt();
+                    } while (veces <= 0 && veces >= 20);
 
-                } while (veces <= 0 && veces >= 20);
+                    for (int i = 0; i < veces; i++) {
+                        // Pedimos al usuario los datos del nuevo contacto.
+                        System.out.print("Introduce el nombre: ");
+                        nombre = sc.next();
 
-                for (int i = 0; i < veces; i++) {
-                    // Pedimos al usuario los datos del nuevo contacto.
-                    System.out.print("Introduce el nombre: ");
-                    nombre = sc.next();
+                        System.out.print("Introduce los apellidos: ");
+                        apellidos = sc.next();
 
-                    System.out.print("Introduce los apellidos: ");
-                    apellidos = sc.next();
+                        System.out.print("Introduce el telefono: ");
+                        telefono = sc.nextInt();
+                        System.out.println();
 
-                    System.out.print("Introduce el telefono: ");
-                    telefono = sc.nextInt();
-                    System.out.println();
+                        datos = new String[]{nombre, apellidos, Integer.toString(telefono)};
 
-                    datos = new String[]{nombre, apellidos, Integer.toString(telefono)};
+                        // Llamamos al método para leer el fichero y le pasamos los atributos.
+                        tratarFichero(datos);
+                    }
+                } else if (opcion == 2) {
+                    buscarContacto(); // Llamamos al método para buscar contactos.
+                } else if (opcion == 3) {
 
-                    // Llamamos al método para leer el fichero y le pasamos los atributos.
-                    tratarFichero(datos);
+                } else if (opcion == 4) {
+                    System.out.println("Has salido del programa. ");
+                    System.out.println("Ahora guardaremos el fichero.");
                 }
-
-            } else if (opcion == 2) {
-
-
-            } else if (opcion == 3) {
-
-            } else if (opcion == 4) {
-                System.out.println("Has salido del programa. " + "\n");
-            }
-        } while (opcion != 4);
+            } while (opcion != 4);
+        } catch (Exception e) {
+            System.out.println("Error: "
+                    + "Tienes que poner un número entero del rango del menú.");
+        }
     }
 
     // Método para leer el fichero.
@@ -120,15 +124,17 @@ public class Agenda {
             // Mostramos al usuario que se háya leído bien el fichero.
             System.out.println("Se ha leído el fichero correctamente. " + "\n");
 
+            // Escribimos los datos del nuevo contacto al fichero agenda.txt.
             bw.write(String.format("Nombre:    %s%nApellidos: %s%nTelefono:  %s%n%n",
                     datos[0], datos[1], datos[2]));
 
+            // Informamos al usuario por consola que se hayan añadido los contactos.
             System.out.println("Se ha añadido un nuevo contacto al fichero. " + "\n");
 
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
 
-        } finally {
+        } finally { // Cerramos el fichero con un control de error.
             if (bw != null) {
                 try {
                     bw.close();
@@ -137,5 +143,50 @@ public class Agenda {
                 }
             }
         }
+    }
+
+    // Método para buscar contactos en el fichero agenda.txt.
+    public void buscarContacto() {
+        String inicial; // Variable para guardar la inicial.
+
+        // Pedimos al usuario la inicial para buscar.
+        do {
+            System.out.print("Introduzca una inicial para buscar los contactos: ");
+            inicial = sc.next();
+        } while (inicial.isEmpty()); // Si está vacio lo vuelve a pedir.
+
+        // Creamos un try con recurso para leer el fichero.
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+
+            // Declaramos las variables para leer el fichero.
+            String linea;
+            boolean encontrado = false;
+
+            while ((linea = br.readLine()) != null) {
+                if (linea.startsWith("Nombre:") && linea.contains(inicial)) {
+                    // Mostramos nombre
+                    System.out.println(linea);
+
+                    System.out.println(br.readLine() + "\n");
+
+                    // Mostramos teléfono
+                    System.out.println(br.readLine() + "\n");
+
+                    encontrado = true; // Ponemos true para saber que se ha encontrado.
+                }
+            }
+
+            // Si no se encuentra la inicial mostramos un mensaje.
+            if (!encontrado) {
+                System.out.println("No se encontraron contactos con esa inicial.");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al leer el fichero: " + e.getMessage());
+        }
+    }
+
+    public void comparaContactos() {
+
     }
 }
