@@ -13,6 +13,9 @@ public class Agenda {
     String apellidos;
     int telefono;
 
+    // Creamos un array para guardar los datos del contacto.
+    String[] datos;
+
     // Declaramos los atributos para el fichero.
     File f = new File("UD8/fixers/agenda.txt");
 
@@ -49,9 +52,6 @@ public class Agenda {
                     // Creamos una variable para saber cuantas veces va a introducir datos.
                     int veces;
 
-                    // Creamos un array para guardar los datos del contacto.
-                    String[] datos;
-
                     do {
                         System.out.println("Introduzca las veces que desea introducir datos: ");
                         veces = sc.nextInt();
@@ -78,7 +78,7 @@ public class Agenda {
                 } else if (opcion == 2) {
                     buscarContacto(); // Llamamos al método para buscar contactos.
                 } else if (opcion == 3) {
-
+                    comparaContactos(); // Llamamos al método para ordenar por nombre.
                 } else if (opcion == 4) {
                     System.out.println("Has salido del programa. ");
                     System.out.println("Ahora guardaremos el fichero.");
@@ -183,10 +183,46 @@ public class Agenda {
 
         } catch (IOException e) {
             System.out.println("Error al leer el fichero: " + e.getMessage());
+        } finally { // Cerramos el fichero con un control de error.
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Error al cerrar el fichero: " + e.getMessage());
+            }
         }
     }
 
+    // Método para ordenar por nombre los contactos del fichero agenda.txt.
     public void comparaContactos() {
 
+        int n = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            // Leemos el fichero con el bucle y contamos las líneas leídas.
+            while (br.readLine() != null) {
+                n++;
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el fichero: " + e.getMessage());
+        }
+
+        String[] lineas = new String[n];
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String linea;
+
+            // Recorremos el fichero con la variable creada.
+            int i = 0;
+            while ((linea = br.readLine()) != null) {
+                lineas[i++] = linea;
+            }
+
+            // Imprimimos los contactos ordenados por nombre.
+            for (String l : lineas) {
+                System.out.println(l);
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el fichero: " + e.getMessage());
+        }
     }
 }
