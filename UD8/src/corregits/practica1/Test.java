@@ -1,4 +1,4 @@
-package corregits.practica1a;
+package corregits.practica1;
 
 public class Test {
 
