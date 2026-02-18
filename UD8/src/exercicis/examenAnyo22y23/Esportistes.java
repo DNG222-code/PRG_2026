@@ -8,9 +8,9 @@ public class Esportistes {
     double pes;
     double alsada;
 
-    public static String ObtenerAtributos(String atributo) {
-        Scanner sc = new Scanner(System.in);
-
-
-    }
+//    public static String ObtenerAtributos(String atributo) {
+//        Scanner sc = new Scanner(System.in);
+//
+//
+//    }
 }
