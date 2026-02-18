@@ -3,14 +3,19 @@ package exercicis.examenAnyo22y23;
 import java.util.*;
 
 public class Esportistes {
-    String nom;
-    int edat;
-    double pes;
-    double alsada;
+    static String nom;
+    static int edat;
+    static double pes;
+    static double alsada;
 
-//    public static String ObtenerAtributos(String atributo) {
-//        Scanner sc = new Scanner(System.in);
-//
-//
-//    }
+    public static void ObtenerAtributos() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Introduce el nombre del esportista: ");
+        nom = sc.next();
+
+        System.out.println("Introduce la edad del esportista: ");
+        edat = sc.nextInt();
+
+    }
 }
