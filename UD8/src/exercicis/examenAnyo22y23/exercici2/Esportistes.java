@@ -1,4 +1,4 @@
-package exercicis.examenAnyo22y23;
+package exercicis.examenAnyo22y23.exercici2;
 
 import java.util.*;
 
