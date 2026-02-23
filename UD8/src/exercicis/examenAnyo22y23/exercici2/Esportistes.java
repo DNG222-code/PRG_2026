@@ -1,21 +1,20 @@
 package exercicis.examenAnyo22y23.exercici2;
 
-import java.util.*;
-
 public class Esportistes {
-    static String nom;
     static int edat;
     static double pes;
     static double alsada;
 
-    public static void ObtenerAtributos() {
-        Scanner sc = new Scanner(System.in);
+    public static void calcularMedia() {
 
-        System.out.println("Introduce el nombre del esportista: ");
-        nom = sc.next();
+        TratamentFichers.leer(edat, pes, alsada);
 
-        System.out.println("Introduce la edad del esportista: ");
-        edat = sc.nextInt();
+        double calcularMediaPes;
+        double calcularMediaAlsada;
 
+        calcularMediaPes = pes + pes / 2;
+        calcularMediaAlsada = alsada + alsada / 2;
+        System.out.println("Media Pes: " + calcularMediaPes);
+        System.out.println("Media Alsada: " + calcularMediaAlsada);
     }
 }
