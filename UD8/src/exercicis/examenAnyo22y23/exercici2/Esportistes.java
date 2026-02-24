@@ -1,20 +1,29 @@
 package exercicis.examenAnyo22y23.exercici2;
 
 public class Esportistes {
+
     static int edat;
     static double pes;
     static double alsada;
+    static int count = 0;
+
+    static double sumaPes = 0.0;
+    static double sumaAlsada = 0.0;
 
     public static void calcularMedia() {
 
-        TratamentFichers.leer(edat, pes, alsada);
+        TratamentFichers.leer(edat, pes, alsada, count);
 
-        double calcularMediaPes;
-        double calcularMediaAlsada;
+        sumaPes += pes;
+        sumaAlsada += alsada;
+        count++;
 
-        calcularMediaPes = pes + pes / 2;
-        calcularMediaAlsada = alsada + alsada / 2;
-        System.out.println("Media Pes: " + calcularMediaPes);
-        System.out.println("Media Alsada: " + calcularMediaAlsada);
+        System.out.println();
+
+        double mediaPes = sumaPes / count;
+        double mediaAlsada = sumaAlsada / count;
+
+        System.out.println("Media Pes: " + mediaPes);
+        System.out.println("Media Alsada: " + mediaAlsada);
     }
 }

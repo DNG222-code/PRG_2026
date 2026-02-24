@@ -5,29 +5,58 @@ import java.util.*;
 
 public class TratamentFichers {
 
-    static String nombreFichero = "esportistes.txt";
+    static String nombreFichero = "UD8/fixers/esportistes.txt";
+    static int count = 0;
 
-    public static void leer(int edat, double pes, double alsada) {
+    public static void leer(int edat, double pes, double alsada, int count) {
 
         try (BufferedReader br = new BufferedReader(new FileReader(nombreFichero))) {
-            br.readLine(); // Salto de lectura de línea.
+            br.readLine(); // Saltar cabecéra (si existe)
 
-            // Inicializamos el Scanner y la lectura de cada línea.
-            Scanner sc;
-            String linea = br.readLine();
+            String linea;
 
-            // Recorremos todo el fichero.
-            while (linea != null) {
-                sc = new Scanner(linea);
-                linea = br.readLine();
+            // Recorremos todo el fichero (AHORA sin saltarnos líneas)
+            while ((linea = br.readLine()) != null) {
+                linea = linea.trim();
 
-                // Guardamos lo leído en cada variable.
-                edat = sc.nextInt();
-                pes = sc.nextDouble();
-                alsada = sc.nextDouble();
+                System.out.println("DATOS: \n" + "[" + linea + "]" + "\n");
+                if (linea.isEmpty()) continue;
+
+                try (Scanner sc = new Scanner(linea)) {
+                    // Acepta separadores tipo: ';' con/sin espacios, o cualquier cantidad de espacios
+                    sc.useDelimiter("\\s*;\\s*|\\s+");
+
+                    // Para números con coma decimal (español)
+                    sc.useLocale(Locale.forLanguageTag("es-ES"));
+
+                    if (!sc.hasNextInt()) {
+                        // Si aquí falla, la línea no empieza por edad como int
+                        continue;
+                    }
+                    edat = sc.nextInt();
+
+                    if (!sc.hasNextDouble()) {
+                        // Si aquí falla, normalmente es por decimal con punto/coma o delimitador incorrecto
+                        continue;
+                    }
+                    pes = sc.nextDouble();
+
+                    if (!sc.hasNextDouble()) {
+                        continue;
+                    }
+                    alsada = sc.nextDouble();
+                }
+
+                System.out.println();
+
+                if (count == 0) {
+                    System.out.println("No se han leído registros (formato/locale/delimitador o fichero vacío).");
+                    return;
+                }
             }
+
         } catch (IOException e) {
-            System.out.println("Error de lectura: " + e.getMessage());
+                System.out.println( "El fichero no existe: " + nombreFichero);
         }
     }
 }
