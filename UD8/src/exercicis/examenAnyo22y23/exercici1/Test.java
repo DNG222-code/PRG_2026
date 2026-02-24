@@ -1,21 +1,13 @@
 package exercicis.examenAnyo22y23.exercici1;
 
-import java.io.*;
+import java.io.IOException;
 
 public class Test {
 
-    String fitxer1 = "/UD8/fitxersBinaris/fitxer1.dat.dat";
-    String fitxer2 = "/UD8/fitxersBinaris/fitxer2.dat.dat";
+    public static void main(String[] args) throws IOException {
+        NumerosABinari.escriureFitxerBinari();
 
-    Integer[] fusionar(String fitxer1, String fitxer2) {
-
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fitxer1))) {
-
-
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-
-        return null;
+        GestioFitxersBinaris.fusionar("UD8/fitxersBinaris/fitxer1.dat",
+                "UD8/fitxersBinaris/fitxer2.dat");
     }
 }
