@@ -2,6 +2,7 @@ package exercicis.examenAnyo22y23.exercici2;
 
 public class Esportistes {
 
+    static String nom;
     static int edat;
     static double pes;
     static double alsada;
@@ -12,13 +13,11 @@ public class Esportistes {
 
     public static void calcularMedia() {
 
-        TratamentFichers.leer(edat, pes, alsada, count);
+        TratamentFichers.leer(nom, edat, pes, alsada, count);
 
         sumaPes += pes;
         sumaAlsada += alsada;
         count++;
-
-        System.out.println();
 
         double mediaPes = sumaPes / count;
         double mediaAlsada = sumaAlsada / count;

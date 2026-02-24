@@ -8,7 +8,7 @@ public class TratamentFichers {
     static String nombreFichero = "UD8/fixers/esportistes.txt";
     static int count = 0;
 
-    public static void leer(int edat, double pes, double alsada, int count) {
+    public static void leer(String nom, int edat, double pes, double alsada, int count) {
 
         try (BufferedReader br = new BufferedReader(new FileReader(nombreFichero))) {
             br.readLine(); // Saltar cabecéra (si existe)
