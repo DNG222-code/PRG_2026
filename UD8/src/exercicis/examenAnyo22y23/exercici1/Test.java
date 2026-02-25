@@ -1,6 +1,6 @@
 package exercicis.examenAnyo22y23.exercici1;
 
-import java.io.IOException;
+import java.io.*;
 
 public class Test {
 
