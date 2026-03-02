@@ -5,7 +5,7 @@ import java.io.IOException;
 public class Torneo {
 
     // Atributos de la clase Torneo.
-    Equipo[] equipos;
+    private Equipo[] equipos;
 
     // Métodos obligatorios de la clase Torneo.
     void addEquipo(Equipo e) throws EquipoDuplicadoException {
@@ -35,5 +35,14 @@ public class Torneo {
     void guardarTexto(String ruta) throws IOException {
 
 
+    }
+
+    // Getter & Setter.
+    public Equipo[] getEquipos() {
+        return equipos;
+    }
+
+    public void setEquipos(Equipo[] equipos) {
+        this.equipos = equipos;
     }
 }
