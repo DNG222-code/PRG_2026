@@ -1,6 +1,5 @@
 package exercicis.activitat8pt4;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class CopaDelReyManager {

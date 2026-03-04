@@ -1,6 +1,6 @@
 package exercicis.activitat8pt4;
 
-import java.io.IOException;
+import java.io.*;
 
 public class Torneo {
 
@@ -27,7 +27,7 @@ public class Torneo {
 
     }
 
-    void cargarBinario(String ruta) throws IOException {
+    void cargarBinario(String ruta) throws IOException, ClassNotFoundException {
 
 
     }
