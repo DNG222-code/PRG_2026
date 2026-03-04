@@ -5,7 +5,7 @@ import java.io.*;
 public class Torneo {
 
     // Atributos de la clase Torneo.
-    private Equipo[] equipos;
+    private static Equipo[] equipos;
 
     // Métodos obligatorios de la clase Torneo.
     void addEquipo(Equipo e) throws EquipoDuplicadoException {
@@ -66,11 +66,11 @@ public class Torneo {
     }
 
     // Getter & Setter.
-    public Equipo[] getEquipos() {
+    public static Equipo[] getEquipos() {
         return equipos;
     }
 
-    public void setEquipos(Equipo[] equipos) {
-        this.equipos = equipos;
+    public static void setEquipos(Equipo[] equipos) {
+        equipos = equipos;
     }
 }

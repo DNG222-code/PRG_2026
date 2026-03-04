@@ -6,7 +6,8 @@ public class CopaDelReyManager {
 
     public static void main(String[] args) {
 
-
+        // Llamamos al menu principal.
+        menu();
 
     }
 
@@ -31,14 +32,14 @@ public class CopaDelReyManager {
             System.out.println("7. Mostrar jugadores de un equipo");
             System.out.println("8. Simular partido");
             System.out.println("9. Mostrar clasificación");
-            System.out.println("0. Salir");
+            System.out.println("0. Salir" + "\n");
 
             System.out.print("Selecciona una opcion: ");
             opcion = new Scanner(System.in).nextInt();
 
             // Condiciones, según la opcion seleccionada.
             if (opcion == 1) {
-
+                Equipo.crearEquipo();
             } else if (opcion == 2) {
 
             } else if (opcion == 3) {
