@@ -1,4 +1,4 @@
-package corregits.encriptador1;
+package corregits.encriptador2;
 
 import java.io.*;
 
@@ -32,7 +32,7 @@ public class GestionFicheros {
         try(BufferedReader in = new BufferedReader(new FileReader(nombreFichero))) {
 
             String linea  = in.readLine();
-            if (linea != null) {
+            if(linea != null) {
                 if(!esCodificado) {
                     caracteres = linea.toCharArray();
                 } else {

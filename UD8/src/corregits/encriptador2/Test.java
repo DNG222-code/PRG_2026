@@ -4,16 +4,19 @@ public class Test {
 
     public static void main(String[] args) {
 
-//        Encriptador encriptador = new Encriptador("UD8/fitxersEncriptador/mensaje.txt",
-//                "UD8/fitxersEncriptador/codec.txt",
-//                "UD8/fitxersEncriptador/secreto.txt");
-//
-//        System.out.println("Texto a codificar: ");
-//        System.out.println(encriptador.getTexto());
-//
-//        encriptador.codificaTexto();
-//
-//        System.out.println("Texto codificado: ");
-//        System.out.println(encriptador.getTextoCodificado());
+        // Cargamos el mensaje.
+		Encriptador encriptador = new Encriptador("UD8/FichersEncriptador/codec.txt",
+                "UD8/FichersEncriptador/secreto.txt");
+
+		// Mostramos el contenido del mensaje.
+		System.out.println("Texto a descodificar:");
+		System.out.println(encriptador.getTextoCodificado());
+
+		// Encriptamos el texto.
+		encriptador.desCodificaTexto();
+
+		// Mostramos el texto desencriptado.
+		System.out.println("Texto descodificado:");
+		System.out.println(encriptador.getTexto());
     }
 }
