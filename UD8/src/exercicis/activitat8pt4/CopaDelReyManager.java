@@ -39,7 +39,7 @@ public class CopaDelReyManager {
 
             // Condiciones, según la opcion seleccionada.
             if (opcion == 1) {
-                Equipo.crearEquipo();
+
             } else if (opcion == 2) {
 
             } else if (opcion == 3) {
