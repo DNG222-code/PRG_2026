@@ -1,0 +1,9 @@
+UD9 - COL·LECCIONS Y TIPUS GENERICS
+
+COLLECTIONS -> LIST (ArrayList) Y SET
+MAPS -> MAP
+
+Classe genèrica
+        class NomClaasse<T> {
+            
+        }
