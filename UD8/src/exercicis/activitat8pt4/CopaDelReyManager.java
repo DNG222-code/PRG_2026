@@ -39,7 +39,11 @@ public class CopaDelReyManager {
 
             // Condiciones, según la opcion seleccionada.
             if (opcion == 1) {
-
+                try {
+                    Torneo.addEquipo();
+                } catch (EquipoDuplicadoException e) {
+                    System.out.println(e.getMessage());
+                }
             } else if (opcion == 2) {
 
             } else if (opcion == 3) {

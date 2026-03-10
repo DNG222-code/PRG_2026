@@ -21,7 +21,7 @@ public class Equipo implements Mostrable, Jugable {
     }
 
     // Getter & Setter.
-    public String getNombre() {
+    public static String getNombre() {
         return nombre;
     }
 

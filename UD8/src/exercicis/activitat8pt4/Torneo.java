@@ -1,15 +1,38 @@
 package exercicis.activitat8pt4;
 
 import java.io.*;
+import java.util.*;
 
 public class Torneo {
 
     // Atributos de la clase Torneo.
-    private static Equipo[] equipos;
+    private static Equipo[] equipos = new Equipo[10];
 
     // Métodos obligatorios de la clase Torneo.
-    void addEquipo(Equipo e) throws EquipoDuplicadoException {
+    static void addEquipo() throws EquipoDuplicadoException {
+        Scanner sc = new Scanner(System.in);
 
+        System.out.print("Introduce el nombre del equipo: ");
+        String nombre = sc.nextLine().trim();
+
+        for (Equipo equipoExistente : equipos) {
+            if (equipoExistente != null && equipoExistente.getNombre().equalsIgnoreCase(nombre)) {
+                throw new EquipoDuplicadoException("El equipo " + nombre + " ya existe.");
+            }
+        }
+
+        Equipo e = new Equipo();
+        e.setNombre(nombre);
+
+        for (int i = 0; i < equipos.length; i++) {
+            if (equipos[i] == null) {
+                equipos[i] = e;
+                System.out.println("Equipo creado correctamente.");
+                return;
+            }
+        }
+
+        System.out.println("No se pueden añadir más equipos: el torneo está completo.");
     }
 
     void simularPartido(String nombreEquipo1, String nombreEquipo2) throws EquipoNoEncontradoException {
@@ -71,6 +94,6 @@ public class Torneo {
     }
 
     public static void setEquipos(Equipo[] equipos) {
-        equipos = equipos;
+        Torneo.equipos = equipos;
     }
 }
