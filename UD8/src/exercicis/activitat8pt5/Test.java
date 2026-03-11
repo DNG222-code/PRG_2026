@@ -4,12 +4,13 @@ public class Test {
 
     public static void main(String[] args) {
 
-
+        // Llamamos al menu();
+        menu();
 
     }
 
     // Mètode del menu
-    void menu() {
+    static void menu() {
         System.out.println
                 ("-----------------" +
                 "    DICCIONARI   " +

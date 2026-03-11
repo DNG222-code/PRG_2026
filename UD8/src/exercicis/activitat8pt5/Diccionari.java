@@ -1,7 +1,5 @@
 package exercicis.activitat8pt5;
 
-import java.util.*;
-
 public class Diccionari implements Traductor {
 
     // Atributos
@@ -13,17 +11,14 @@ public class Diccionari implements Traductor {
     }
 
     void afegit(String castella, String catala) {
-        // Declarem el scanner.
-        Scanner sc = new Scanner(System.in);
+        // Contador para que no se borren las palabras.
+        int contador = 0;
 
-        // Demanem a l'usuari que introdueixi una paraula per cada idioma.
-        System.out.println("Introdueix una paraula en Castella: " );
-        castella = sc.nextLine();
+        // Declarem s'array amb dues posicions.
+        entrades = new Entrada[10];
+        entrades[contador] = new Entrada(castella, catala);
 
-        System.out.println("Introdueix una paraula en Catala: " );
-        catala = sc.nextLine();
-
-
+        contador++;
     }
 
     void llistar() {
