@@ -1,4 +1,4 @@
-package diccionari;
+package corregits.diccionari;
 
 public interface Traductor {
 

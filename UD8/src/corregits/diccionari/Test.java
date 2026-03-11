@@ -1,4 +1,4 @@
-package diccionari;
+package corregits.diccionari;
 
 import java.util.*;
 
