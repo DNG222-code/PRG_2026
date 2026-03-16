@@ -54,9 +54,9 @@ public class Test {
 
         Contenidor<ArrayNumeric> c = new Contenidor<>();
 
-        ArrayNumeric arrayNumeric = new ArrayNumeric();
+//        ArrayNumeric arrayNumeric = new ArrayNumeric();
 
-        arrayNumeric = c.extreure();
+//        arrayNumeric = c.extreure();
     }
 
 }
