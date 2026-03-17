@@ -1,4 +1,4 @@
-package correciones.colecciones;
+package correciones.colecciones.ejercicio1;
 
 import java.util.*;
 
