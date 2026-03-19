@@ -22,5 +22,39 @@ public class Test {
 
         System.out.println();
 
+        // Mostramos la colección original.
+        System.out.println("Mostramos la colección original: " + numeros + "\n");
+
+        // Creamos otra colección con número positivos.
+        Collection<Integer> numsPositivos = numeros.stream()
+                .filter(n -> n > 0)
+                .toList();
+
+        // Creamos otra colección con números negativos.
+        Collection<Integer> numsNegativos = numeros.stream()
+                .filter(n -> n < 0)
+                .toList();
+
+        // Creamos una colección con números pares.
+        Collection<Integer> numsPares = numeros.stream()
+                .filter(n -> n % 2  == 0)
+                .toList();
+
+        // Comprobamos si todos los números negativos se encuentran en la colección original.
+        numeros.retainAll(numsNegativos);
+
+        // Creamos una nueva colección que sea la unión de números positivos y pares.
+        Collection<Integer> numsPositivosPares = new ArrayList<>();
+        numsPositivosPares.addAll(numsPositivos);
+        numsPositivosPares.addAll(numsPares);
+
+        // Eliminamos de esta colección todos los elementos que también aparecen en la
+        // colección de números negativos.
+        numsPositivosPares.removeAll(numsNegativos);
+
+        // Mostramos la colección final y su número de elementos.
+        System.out.println("Colección final: ");
+        System.out.println(numsPositivosPares + "\n" + "\n" + "¿Cuantos números hay? " + numsPositivosPares.size());
+
     }
 }
