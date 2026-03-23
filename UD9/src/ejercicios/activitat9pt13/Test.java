@@ -1,6 +1,8 @@
 package ejercicios.activitat9pt13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Test {
 
@@ -9,7 +11,7 @@ public class Test {
         // Atributos.
         Scanner sc = new Scanner(System.in);
 
-        int negativo;
+        int numero;
 
         // Lista de números.
         List<Integer> numeros = new ArrayList<>();
@@ -19,21 +21,20 @@ public class Test {
         do {
             System.out.print("Introduzca un número entero, " +
                     "si introduce un negativo saldrá del bucle: ");
-            negativo = sc.nextInt();
+            numero = sc.nextInt();
 
-            if (negativo < 0) {
-                numeros.add(sc.nextInt());
+            if (numero >= 0) {
+                numeros.add(numero);
             }
-        } while (!numeros.contains(negativo));
+        } while (numero >= 0);
 
         System.out.println();
 
         for (int i = 0; i < numeros.size(); i++) {
             if (numeros.get(i) % 2 == 0) {
                 numeros.set(i, numeros.get(i) * 100);
-
             }
-            System.out.println("Indices: " + numeros.get(i) + "\n");
+            System.out.println("Valor en la posición " + i + ": " + numeros.get(i));
         }
 
         System.out.println();
@@ -42,5 +43,6 @@ public class Test {
         System.out.println("Lista final: ");
         System.out.println(numeros);
 
+        sc.close();
     }
 }
