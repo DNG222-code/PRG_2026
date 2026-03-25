@@ -1,17 +1,20 @@
 package ejercicios.activitat9pt18;
 
-public class Socio implements Comparable<Socio> {
+import java.io.*;
+
+// Implementamos la interfaz Comparable y Serializable.
+public class Socio implements Comparable<Socio>, Serializable {
 
     // Atributos.
-    private String DNI;
-    private String nombre;
-    private String fechaAlta;
+    String DNI;
+    String nombre;
+    String fechaAlta;
 
     // Constructor.
     public Socio(String DNI, String nombre, String fechaAlta) {
-        this.setDNI(DNI);
-        this.setNombre(nombre);
-        this.setFechaAlta(fechaAlta);
+        this.DNI = DNI;
+        this.nombre = nombre;
+        this.fechaAlta = fechaAlta;
     }
 
     // Métodos obligatorios.
@@ -29,33 +32,9 @@ public class Socio implements Comparable<Socio> {
 
     }
 
+    // Método por defecto.
     @Override
     public String toString() {
         return "Socio{" + "DNI=" + DNI + ", nombre=" + nombre + ", fechaAlta=" + fechaAlta + '}';
-    }
-
-    // Getters y setters.
-    public String getDNI() {
-        return DNI;
-    }
-
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getFechaAlta() {
-        return fechaAlta;
-    }
-
-    public void setFechaAlta(String fechaAlta) {
-        this.fechaAlta = fechaAlta;
     }
 }
