@@ -14,9 +14,13 @@ public class Test {
         TratamientoFicheros.guardarFichero(listaSocios);
     }
 
-    private static void menu(List<Socio> listaSocios) {
+    // Método para el menú.
+    public static void menu(List<Socio> listaSocios) {
         // Declaramos el Scanner.
         Scanner sc = new Scanner(System.in);
+
+        // Declaramos el socio para poder modificarlo.
+        Socio s = new Socio("", "", "");
 
         // Mostramos el menú.
         System.out.println("====================");
@@ -39,12 +43,25 @@ public class Test {
             System.out.println("A continuación deberá introducir los datos del socio " +
                     "(DNI, Nombre y fecha de alta.): " + "\n");
             System.out.print("DNI: ");
-
+            s.setDNI(sc.nextLine());
             System.out.print("Nombre: ");
-
+            s.setNombre(sc.nextLine());
             System.out.print("Fecha de alta: ");
-        } else if (opcion == 2) {
+            s.setFechaAlta(sc.nextLine());
 
+            // Agregamos los datos a la lista de socios.
+            listaSocios.add(s);
+        } else if (opcion == 2) {
+            // Pedimos al usuario el DNI, Nombre y Fecha de alta. Del socio que se quiere dar de baja.
+            System.out.print("Introduce el DNI del socio que quieres dar de baja: ");
+            s.setDNI(sc.nextLine());
+            System.out.println("Introduce el nombre del socio que quieres dar de baja:");
+            s.setNombre(sc.nextLine());
+            System.out.println("Introduce la fecha de alta que quiere dar de baja: ");
+            s.setFechaAlta(sc.nextLine());
+
+            // Eliminamos el socio de la lista.
+            listaSocios.remove(s);
         } else if (opcion == 3) {
 
         } else if (opcion == 4) {
