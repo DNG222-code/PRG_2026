@@ -1,6 +1,8 @@
 package ejercicios.activitat9pt18;
 
 import java.io.*;
+import java.time.*;
+import java.time.format.*;
 import java.util.*;
 
 // Implementamos la interfaz Comparable y Serializable.
@@ -21,22 +23,30 @@ public class Socio implements Comparable<Socio>, Serializable {
     // Métodos obligatorios.
     @Override
     public boolean equals(Object o) {
-        return false;
+        // Ordenamos por Nombre por defecto.
+        return this.getNombre().equals(((Socio) o).getNombre());
     }
 
     @Override
     public int compareTo(Socio o) {
-        return 0;
+        return this.DNI.compareTo(o.DNI); // Ordenamos por DNI.
     }
 
-    public void antiguedad() {
+    // Método para enseñar los años de antiguedad.
+    public static void antiguedad(String fechaAlta) {
+        // Formateamos la fecha de alta.
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate fechaAltaDate = LocalDate.parse(fechaAlta, formato);
+        LocalDate hoy = LocalDate.now(); // Sacamos la fecha actual.
 
-    }
+        // Calculamos la diferencia entre la fecha de alta y la actual.
+        Period antiguedad = Period.between(fechaAltaDate, hoy);
 
-    // Método por defecto.
-    @Override
-    public String toString() {
-        return "Socio{" + "DNI=" + DNI + ", nombre=" + nombre + ", fechaAlta=" + fechaAlta + '}';
+        // Enseñamos los años de diferencia entre la fecha de alta y la actual.
+        System.out.println("Antigüedad: "
+                + antiguedad.getYears() + " años, "
+                + antiguedad.getMonths() + " meses y "
+                + antiguedad.getDays() + " días.");
     }
 
     // Getter's y Setter's
