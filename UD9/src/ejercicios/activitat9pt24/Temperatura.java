@@ -1,8 +1,7 @@
 package ejercicios.activitat9pt24;
 
 import java.io.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.*;
 import java.util.*;
 
 public class Temperatura implements Serializable /* Implementamos Serializable. */ {
@@ -12,7 +11,7 @@ public class Temperatura implements Serializable /* Implementamos Serializable. 
     private LocalDate fecha;
     private double temperatura;
 
-    // Contructor para poder modificar datos.
+    // Constructor para poder modificar datos.
     public Temperatura(LocalTime hora, LocalDate fecha, double temperatura) {
         this.setHora(hora);
         this.setFecha(fecha);
@@ -48,7 +47,7 @@ public class Temperatura implements Serializable /* Implementamos Serializable. 
                 String horaTexto = sc.next().trim();
                 LocalTime hora  = LocalTime.parse(horaTexto);
 
-                System.out.print("Introduzca la fecha actual: ");
+                System.out.print("Introduzca la fecha actual (yyyy-mm-dd): ");
                 String fechaTexto = sc.next().trim();
                 LocalDate fecha = LocalDate.parse(fechaTexto);
 
@@ -61,7 +60,11 @@ public class Temperatura implements Serializable /* Implementamos Serializable. 
                 temperaturas.add(new Temperatura(hora, fecha, temperatura));
             } else if (opcion == 2) {
                 // Listamos los registros.
-                System.out.println("Lista de registros: " + temperaturas);
+                for (Temperatura temp : temperaturas) {
+                    System.out.println("Lista de registros: " + temp.toString());
+                }
+
+                System.out.println();
             } else if (opcion == 3) {
                 // Variables para almacenar los valores max, min, medio.
                 Temperatura max, min;
@@ -74,14 +77,23 @@ public class Temperatura implements Serializable /* Implementamos Serializable. 
 
                 // Mostramos estadísticas (con valores máximo, mínimo y medio de las temperaturas
                 // registradas hasta el momento desde la primera lectura del día).
-                System.out.print("Valores máximos: " + max);
-                System.out.print("Valores mínimos: " + min + "\n");
+                System.out.print("Valores máximos: " + max.toString());
+                System.out.print("Valores mínimos: " + min.toString() + "\n");
+                System.out.print("Temperatura media: " + (max.getTemperatura() + min.getTemperatura()) / 2);
+
+                System.out.println();
             } else if (opcion == 4) {
                 System.out.println("Has salido del programa!");
                 // Llamamos al método para grabar el fichero binario con los datos de la lista.
                 TratamientoFicheros.grabarFichero(temperaturas);
             }
         } while (opcion != 4);
+    }
+
+    // Método toString.
+    @Override
+    public String toString() {
+        return "Temperatura{" + "hora=" + hora + ", fecha=" + fecha + ", temperatura=" + temperatura + '}';
     }
 
     // Getter y setter.
