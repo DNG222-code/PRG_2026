@@ -1,9 +1,9 @@
-package ejercicio1;
+package ud8.ejercicio2;
 
 public interface GestionReservas {
 
     // Métodos de la Interface de GestionReservas.
-    void guardarReserva(Reserva reserva, String nombreFichero, boolean sobrescribir);
+    void guardarReservas(Reserva[] reserva, String nombreFichero, boolean sobrescribir);
 
     Reserva[] leerReservas(String nombreFicheros);
 }

@@ -1,4 +1,4 @@
-package ejercicio2;
+package ud8.ejercicio2;
 
 // Importamos todos los packages para los ficheros.
 import java.io.*;

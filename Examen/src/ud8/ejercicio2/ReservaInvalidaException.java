@@ -1,4 +1,4 @@
-package ejercicio2;
+package ud8.ejercicio2;
 
 public class ReservaInvalidaException extends RuntimeException {
     public ReservaInvalidaException(String message) {
