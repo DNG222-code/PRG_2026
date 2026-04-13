@@ -1,4 +1,4 @@
-package apunts;
+package apunts.abansDePascua;
 
 import java.util.*;
 
