@@ -14,7 +14,7 @@ public class Client implements Comparable<Client> {
 
     @Override
     public String toString() {
-        return "DNI: " + this.DNI + "Nom: " + this.getNom() + ", Edat: " + this.getEdat() + " anys" + "\n";
+        return "DNI: " + this.getDNI() + "Nom: " + this.getNom() + ", Edat: " + this.getEdat() + " anys" + "\n";
     }
 
     public String getNom() {
@@ -31,6 +31,10 @@ public class Client implements Comparable<Client> {
 
     public void setEdat(int edat) {
         this.edat = edat;
+    }
+
+    public String getDNI() {
+        return DNI;
     }
 
     @Override
