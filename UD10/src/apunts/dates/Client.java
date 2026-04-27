@@ -1,0 +1,50 @@
+package apunts.dates;
+
+import java.time.*;
+import java.time.format.*;
+import java.time.temporal.ChronoUnit;
+
+public class Client {
+
+    private String nom;
+    private LocalDate dataNaixement;
+
+    public Client(String nom, String dataNaixement) {
+        this.setNom(nom);
+        this.setDataNaixement(dataNaixement);
+    }
+
+    public boolean esPosterior(String data) {
+        return this.getDataNaixement().isAfter(formatejaData(data, "dd/MM/yy"));
+    }
+
+    private int edat() {
+        return this.getDataNaixement().until(LocalDate.now()).getYears();
+    }
+
+    private LocalDate formatejaData(String data, String pattern) {
+        return LocalDate.parse(data, DateTimeFormatter.ofPattern(pattern));
+    }
+
+    @Override
+    public String toString() {
+        return "Nom: " + this.getNom() + ", Anys: " + this.edat() + "\n";
+    }
+
+    public LocalDate getDataNaixement() {
+        return dataNaixement;
+    }
+
+    public void setDataNaixement(String dataNaixement) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.dataNaixement = formatejaData(dataNaixement, "dd/MM/yyyy");
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+}
