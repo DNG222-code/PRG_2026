@@ -7,10 +7,12 @@ public class Client {
 
     private String nom;
     private LocalDate dataNaixement;
+    private String DNI;
 
-    public Client(String nom, String dataNaixement) {
+    public Client(String nom, String dataNaixement, String DNI) {
         this.setNom(nom);
         this.setDataNaixement(dataNaixement);
+        this.setDNI(DNI);
     }
 
     public boolean esPosterior(String data) {
@@ -36,5 +38,17 @@ public class Client {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public void setDataNaixement(LocalDate dataNaixement) {
+        this.dataNaixement = dataNaixement;
+    }
+
+    public String getDNI() {
+        return DNI;
+    }
+
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
     }
 }
