@@ -26,6 +26,11 @@ public class Especie implements Serializable, Comparable<Especie> {
         return this.getNombre().compareTo(o.getNombre());
     }
 
+    @Override
+    public String toString() {
+        return "(" + this.getNombre() + " - " + this.getTamanyoPromedio() + "),  ";
+    }
+
     // Getters y Setters.
     public String getNombre() {
         return nombre;

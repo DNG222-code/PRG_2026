@@ -2,6 +2,7 @@ package exercicis.activitat10pt9;
 
 import java.io.*;
 import java.util.*;
+import java.util.function.*;
 
 public class Animal implements Serializable {
 
@@ -11,7 +12,7 @@ public class Animal implements Serializable {
     private int edad;
     private double precio;
 
-    public static void menu() {
+    public static void menu() throws FileNotFoundException {
         int opcion = 0;
 
         Scanner sc = new Scanner(System.in);
@@ -38,10 +39,16 @@ public class Animal implements Serializable {
 
             if (opcion == 0) {
                 System.out.println("Guardando datos... Gracias por usar el programa.");
+
+                // Guardamos los datos en ficheros.
+                TratamientoFicheros.escribirFicheros("especies.dat");
+                TratamientoFicheros.escribirFicheros("animales.dat");
             } else if (opcion == 1) {
-
+                // Listamos los animales usando un forEach junto con un Consumer.
+                Consumer<Animal> listarAnimales = a -> System.out.println(a.nombre + a.toString() + "edad: "
+                        + a.edad + ", precio: " + a.precio + "€");
             } else if (opcion == 2) {
-
+                
             } else if (opcion == 3) {
 
             } else if (opcion == 4) {
