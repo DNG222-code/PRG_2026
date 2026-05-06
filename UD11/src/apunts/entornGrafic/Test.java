@@ -29,9 +29,19 @@ public class Test {
         //  - JTabbedPane tbpNom
         //  - JDialog dlgNom
 
+        // Layouts
+        // Gestor de disseny
+
+        // FlowLayout
+        // BorderLayout
+
+//        new ExempleFlowLayout();
+
+        new ExempleBorderLayout();
+
 //        Exemple1.dibuixa();
 
-        ExempleComponents.components();
+//        ExempleComponents.components();
 
 //        ExempleAWT.dibuixar();
 
