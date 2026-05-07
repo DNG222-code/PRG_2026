@@ -87,11 +87,11 @@ public class MetodosUtiles {
 
         // Añadimos los botones y el pnlTablero al panel de Juego.
         Stream.of(
-                        lblTurno,
-                        lblInfo,
-                        lblJugadorX,
-                        lblJugadorO,
-                        pnlTablero
+                    lblTurno,
+                    lblInfo,
+                    lblJugadorX,
+                    lblJugadorO,
+                    pnlTablero
                 )
                 .forEach(pnlJuego::add);
 
