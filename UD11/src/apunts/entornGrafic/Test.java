@@ -1,6 +1,7 @@
 package apunts.entornGrafic;
 
 import javax.swing.*;
+import javax.swing.SwingUtilities;
 
 public class Test {
 
@@ -34,10 +35,12 @@ public class Test {
 
         // FlowLayout
         // BorderLayout
+        // GridLayout
 
 //        new ExempleFlowLayout();
 
-        new ExempleBorderLayout();
+//        SwingUtilities.invokeLater(() -> new ExempleBorderLayout());
+        SwingUtilities.invokeLater(() -> new ExempleGridLayout());
 
 //        Exemple1.dibuixa();
 
