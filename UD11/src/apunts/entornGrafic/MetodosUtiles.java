@@ -14,9 +14,9 @@ public class MetodosUtiles {
         frmPrincipal = new JFrame(titulo);
 
         frmPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frmPrincipal.setLocationRelativeTo(null);
         frmPrincipal.setSize(anchura, altura);
-        frmPrincipal.setVisible(true);
+        frmPrincipal.setLocationRelativeTo(null);
+        frmPrincipal.setLayout(new BorderLayout());
 
         return frmPrincipal;
     }
@@ -40,7 +40,7 @@ public class MetodosUtiles {
                 .forEach(pnlControles::add);
 
         // Añadir el panel de Controles al frame principal.
-        frmPrincipal.add(pnlControles);
+        frmPrincipal.add(pnlControles, BorderLayout.NORTH);
 
         return pnlControles;
     }
@@ -61,10 +61,9 @@ public class MetodosUtiles {
 
         // Botones del panel pnlTablero.
         for (int i = 1; i <= numBotones; i++) {
-            btnS = new JButton("btn_" + 1);
+            btnS = new JButton(" ");
+            pnlTablero.add(btnS);
         }
-
-        pnlTablero.add(btnS);
 
         // BorderLayout's de los paneles.
 
@@ -96,7 +95,11 @@ public class MetodosUtiles {
                 .forEach(pnlJuego::add);
 
         // Añadir el panel de Controles al frame principal.
-        frmPrincipal.add(pnlJuego);
+        frmPrincipal.add(pnlJuego, BorderLayout.CENTER);
+
+        frmPrincipal.revalidate();
+        frmPrincipal.repaint();
+        frmPrincipal.setVisible(true);
 
         return pnlJuego;
     }

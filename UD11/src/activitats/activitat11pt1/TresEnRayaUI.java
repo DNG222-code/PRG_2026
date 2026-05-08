@@ -5,14 +5,14 @@ import static apunts.entornGrafic.MetodosUtiles.*;
 
 public class TresEnRayaUI {
 
-    public static void llamarFicheros() {
+    public static void EjecutarPrograma() {
 
         // Llamamos los métodos de la librería.
         crearFrame("Tres en Raya", 500, 500);
 
         // Paneles con control
         panelControlesSuperior();
-        panelControlesInferior("Usuario1", 3, 3, 9);
+        panelControlesInferior("Jugador X", 3, 3, 9);
 
     }
 }
