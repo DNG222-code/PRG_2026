@@ -12,7 +12,7 @@ public class TresEnRayaUI {
 
         // Paneles con control
         panelControlesSuperior();
-        panelControlesInferior("Jugador X", 3, 3, 9);
+        panelControlesInferior(" X", 3, 3, 9);
 
     }
 }

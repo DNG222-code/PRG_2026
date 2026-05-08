@@ -50,10 +50,11 @@ public class MetodosUtiles {
         JPanel pnlJuego = new JPanel(new BorderLayout());
 
         // Etiqueta del panel inferior.
-        JLabel lblTurno = new JLabel("Turno de: " + "Jugador " + nombreJugador);
-        JLabel lblInfo = new JLabel("Esperando juegadores...");
-        JLabel lblJugadorX = new JLabel("Jugador X");
-        JLabel lblJugadorO = new JLabel("Jugador O");
+        JLabel lblTurno = new JLabel("Turno de: " + "Jugador " + nombreJugador, JLabel.CENTER);
+        JLabel lblInfo = new JLabel("Esperando juegadores...", JLabel.CENTER);
+        JLabel lblJugadorX = new JLabel("Jugador X", JLabel.CENTER);
+        JLabel lblJugadorO = new JLabel("Jugador O", JLabel.CENTER);
+
         JPanel pnlTablero = new JPanel(new GridLayout(row, column));
 
         // Botones del pnlTablero.
@@ -67,32 +68,12 @@ public class MetodosUtiles {
 
         // BorderLayout's de los paneles.
 
-        // BorderLayouts del Panel Juego
-        Stream.of(
-                BorderLayout.NORTH,
-                BorderLayout.SOUTH,
-                BorderLayout.EAST,
-                BorderLayout.WEST
-        ).forEach(
-               algn -> pnlJuego.add(new JPanel(), algn)
-        );
-
-        // BorderLayouts del Panel Tablero
-        Stream.of(
-                BorderLayout.CENTER
-        ).forEach(
-                algn -> pnlTablero.add(new JPanel(), algn)
-        );
-
-        // Añadimos los botones y el pnlTablero al panel de Juego.
-        Stream.of(
-                    lblTurno,
-                    lblInfo,
-                    lblJugadorX,
-                    lblJugadorO,
-                    pnlTablero
-                )
-                .forEach(pnlJuego::add);
+        // Añadimos cada elemento en su posición.
+        pnlJuego.add(lblTurno, BorderLayout.NORTH);
+        pnlJuego.add(lblInfo, BorderLayout.SOUTH);
+        pnlJuego.add(lblJugadorO, BorderLayout.WEST);
+        pnlJuego.add(lblJugadorX, BorderLayout.EAST);
+        pnlJuego.add(pnlTablero, BorderLayout.CENTER);
 
         // Añadir el panel de Controles al frame principal.
         frmPrincipal.add(pnlJuego, BorderLayout.CENTER);
