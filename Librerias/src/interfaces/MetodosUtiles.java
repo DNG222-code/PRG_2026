@@ -1,4 +1,4 @@
-package apunts.entornGrafic;
+package interfaces;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,10 +7,18 @@ import java.util.stream.*;
 public class MetodosUtiles {
 
     // Frame principal para toda la clase.
-    static JFrame frmPrincipal = new JFrame();
+    public static JFrame frmPrincipal = new JFrame();
+
+    // Botónes del panel superior.
+    public static JButton btnNuevaPartida = new JButton("Nueva Partida");
+    public static JButton btnReiniciarPartida = new JButton("Reiniciar Partida");
+    public static JButton btnSalir = new JButton("Salir");
+
+    // Variables globales.
+    public static String nombreJugador;
 
     public static JFrame crearFrame(String titulo, int anchura, int altura) {
-        // Frame principal con el titulo por parametro.
+        // Frame principal con el título por parámetro.
         frmPrincipal = new JFrame(titulo);
 
         frmPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,11 +33,6 @@ public class MetodosUtiles {
     public static JPanel panelControlesSuperior() {
         // Panel superior.
         JPanel pnlControles = new JPanel(new FlowLayout());
-
-        // Botónes del panel superior.
-        JButton btnNuevaPartida = new JButton("Nueva Partida");
-        JButton btnReiniciarPartida = new JButton("Reiniciar Partida");
-        JButton btnSalir = new JButton("Salir");
 
         // Añadimos los botones al panel Controles.
         Stream.of(

@@ -1,5 +1,6 @@
-package activitats.activitat11pt1;
+package activitats.activitat11pt2;
 
+import static eventos.GestionEventos.*;
 import static interfaces.MetodosUtiles.*;
 
 public class TresEnRayaUI {
@@ -12,6 +13,9 @@ public class TresEnRayaUI {
         // Paneles con control
         panelControlesSuperior();
         panelControlesInferior(" X", 3, 3, 9);
+
+        // Llamamos métodos para los ActionListener.
+        turnoJugadores("X");
 
     }
 }
