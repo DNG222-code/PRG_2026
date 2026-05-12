@@ -1,5 +1,7 @@
 package interfaces;
 
+// Imports de clases de mis proyectos y de java.
+import activitats.activitat11pt2.TresEnRayaUI;
 import javax.swing.*;
 import java.awt.*;
 import java.util.stream.*;
@@ -53,24 +55,41 @@ public class MetodosUtiles {
         JPanel pnlJuego = new JPanel(new BorderLayout());
 
         // Etiqueta del panel inferior.
-        JLabel lblTurno = new JLabel("Turno de: " + "Jugador " + nombreJugador, JLabel.CENTER);
-        JLabel lblInfo = new JLabel("Esperando juegadores...", JLabel.CENTER);
+        JLabel lblTurno = new JLabel("Turno de: " + "Jugador " + TresEnRayaUI.nombreJugador, JLabel.CENTER);
+        JLabel lblInfo = new JLabel("Esperando jugadores...", JLabel.CENTER);
         JLabel lblJugadorX = new JLabel("Jugador X", JLabel.CENTER);
         JLabel lblJugadorO = new JLabel("Jugador O", JLabel.CENTER);
 
+        // Declaramos el panel del tablero.
         JPanel pnlTablero = new JPanel(new GridLayout(row, column));
-
-        // Botones del pnlTablero.
-        JButton btnS = new JButton();
 
         // Botones del panel pnlTablero.
         for (int i = 1; i <= numBotones; i++) {
-            btnS = new JButton(" ");
-            pnlTablero.add(btnS);
+            // Declaramos nuevo botón para ir añadiendo uno por uno, cada uno diferente.
+            JButton botonTablero = new JButton();
+
+            // ActionListener para poder pulsar los botones.
+            botonTablero.addActionListener(e -> {
+                JButton botonPulsado = (JButton) e.getSource();
+
+                // Al pulsar un botón, se marca con el jugador actual.
+                botonPulsado.setText(TresEnRayaUI.nombreJugador);
+
+                // Dejamos el botón desactivado para que no se pueda volver a pulsar.
+                botonPulsado.setEnabled(false);
+
+                // Cambiamos automáticamente el turno al siguiente jugador.
+                TresEnRayaUI.cambiarTurnoJugador();
+
+                // Actualizamos la etiqueta del turno.
+                lblTurno.setText("Turno de: Jugador " + TresEnRayaUI.nombreJugador);
+            });
+
+            // Añadimos los botones del tablero al panel.
+            pnlTablero.add(botonTablero);
         }
 
         // BorderLayout's de los paneles.
-
         // Añadimos cada elemento en su posición.
         pnlJuego.add(lblTurno, BorderLayout.NORTH);
         pnlJuego.add(lblInfo, BorderLayout.SOUTH);

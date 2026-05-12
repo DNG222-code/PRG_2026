@@ -1,5 +1,6 @@
 package eventos;
 
+// Imports de clases de mis proyectos y de java.
 import javax.swing.*;
 import static interfaces.MetodosUtiles.*;
 
@@ -16,4 +17,5 @@ public class GestionEventos {
                         null, "Empieza el Jugador " + nombreJugador)
         );
     }
+
 }
