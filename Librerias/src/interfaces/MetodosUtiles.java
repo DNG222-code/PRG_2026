@@ -16,8 +16,15 @@ public class MetodosUtiles {
     public static JButton btnReiniciarPartida = new JButton("Reiniciar Partida");
     public static JButton btnSalir = new JButton("Salir");
 
+    // Declaramos nuevo botón para ir añadiendo uno por uno, cada uno diferente.
+    public static JButton botonTablero;
+    public static JButton botonPulsado;
+
     // Variables globales.
     public static String nombreJugador;
+
+    // Array para los cuadrados de la tabla.
+    public static String[][] cuadrados;
 
     public static JFrame crearFrame(String titulo, int anchura, int altura) {
         // Frame principal con el título por parámetro.
@@ -66,11 +73,11 @@ public class MetodosUtiles {
         // Botones del panel pnlTablero.
         for (int i = 1; i <= numBotones; i++) {
             // Declaramos nuevo botón para ir añadiendo uno por uno, cada uno diferente.
-            JButton botonTablero = new JButton();
+            botonTablero = new JButton();
 
             // ActionListener para poder pulsar los botones.
             botonTablero.addActionListener(e -> {
-                JButton botonPulsado = (JButton) e.getSource();
+                botonPulsado = (JButton) e.getSource();
 
                 // Al pulsar un botón, se marca con el jugador actual.
                 botonPulsado.setText(TresEnRayaUI.nombreJugador);
@@ -105,5 +112,41 @@ public class MetodosUtiles {
         frmPrincipal.setVisible(true);
 
         return pnlJuego;
+    }
+
+    // FILAS:
+    public static boolean comprobarFilas() {
+        // Comprobamos si hay 3 en raya en una fila.
+        for (int i = 0; i < 3; i++) {
+            if (botonPulsado == botonTablero) {
+                botonPulsado.setEnabled(false);
+
+            } else {
+                TresEnRayaUI.cambiarTurnoJugador();
+            }
+        }
+
+        return true;
+    }
+
+    // COLUMNAS:
+    public static boolean comprobarColumnas() {
+        for (int i = 0; i < 3; i++) {
+            if (botonPulsado == botonTablero) {
+                botonPulsado.setEnabled(false);
+            } else {
+                TresEnRayaUI.cambiarTurnoJugador();
+            }
+        }
+
+        return true;
+    }
+
+    private boolean comprobarGanador() {
+        if (comprobarFilas() == true && comprobarColumnas() == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
