@@ -1,4 +1,4 @@
-package activitats.activitat11pt3;
+package activitats.activitat11pt4;
 
 public class Programa {
 

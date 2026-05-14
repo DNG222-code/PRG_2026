@@ -1,4 +1,4 @@
-package activitats.activitat11pt3;
+package activitats.activitat11pt4;
 
 // Imports de clases de mis proyectos y de java.
 import javax.swing.*;

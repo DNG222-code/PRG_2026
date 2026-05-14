@@ -1,7 +1,7 @@
 package interfaces;
 
 // Imports de clases de mis proyectos y de java.
-import activitats.activitat11pt2.TresEnRayaUI;
+import activitats.activitat11pt3.TresEnRayaUI;
 import javax.swing.*;
 import java.awt.*;
 import java.util.stream.*;
@@ -19,6 +19,9 @@ public class MetodosUtiles {
     // Declaramos nuevo botón para ir añadiendo uno por uno, cada uno diferente.
     public static JButton botonTablero;
     public static JButton botonPulsado;
+
+    // Array para guardar los botones del tablero.
+    public static JButton[][] botonesTablero = new JButton[3][3];
 
     // Variables globales.
     public static String nombreJugador;
@@ -71,29 +74,41 @@ public class MetodosUtiles {
         JPanel pnlTablero = new JPanel(new GridLayout(row, column));
 
         // Botones del panel pnlTablero.
-        for (int i = 1; i <= numBotones; i++) {
-            // Declaramos nuevo botón para ir añadiendo uno por uno, cada uno diferente.
-            botonTablero = new JButton();
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                // Declaramos nuevo botón para ir añadiendo uno por uno, cada uno diferente.
+                botonTablero = new JButton();
 
-            // ActionListener para poder pulsar los botones.
-            botonTablero.addActionListener(e -> {
-                botonPulsado = (JButton) e.getSource();
+                // Guardamos el botón dentro del array.
+                botonesTablero[i][j] = botonTablero;
 
-                // Al pulsar un botón, se marca con el jugador actual.
-                botonPulsado.setText(TresEnRayaUI.nombreJugador);
+                // ActionListener para poder pulsar los botones.
+                botonTablero.addActionListener(e -> {
+                    botonPulsado = (JButton) e.getSource();
 
-                // Dejamos el botón desactivado para que no se pueda volver a pulsar.
-                botonPulsado.setEnabled(false);
+                    // Al pulsar un botón, se marca con el jugador actual.
+                    botonPulsado.setText(TresEnRayaUI.nombreJugador);
 
-                // Cambiamos automáticamente el turno al siguiente jugador.
-                TresEnRayaUI.cambiarTurnoJugador();
+                    // Dejamos el botón desactivado para que no se pueda volver a pulsar.
+                    botonPulsado.setEnabled(false);
 
-                // Actualizamos la etiqueta del turno.
-                lblTurno.setText("Turno de: Jugador " + TresEnRayaUI.nombreJugador);
-            });
+                    // Comprobamos si hay ganador.
+                    if (comprobarGanador()) {
+                        lblInfo.setText("Ha ganado el jugador " + TresEnRayaUI.nombreJugador);
+                        lblTurno.setText("Partida finalizada");
+                        bloquearTablero();
+                    } else {
+                        // Cambiamos automáticamente el turno al siguiente jugador.
+                        TresEnRayaUI.cambiarTurnoJugador();
 
-            // Añadimos los botones del tablero al panel.
-            pnlTablero.add(botonTablero);
+                        // Actualizamos la etiqueta del turno.
+                        lblTurno.setText("Turno de: Jugador " + TresEnRayaUI.nombreJugador);
+                    }
+                });
+
+                // Añadimos los botones del tablero al panel.
+                pnlTablero.add(botonTablero);
+            }
         }
 
         // BorderLayout's de los paneles.
@@ -114,39 +129,48 @@ public class MetodosUtiles {
         return pnlJuego;
     }
 
-    // FILAS:
-    public static boolean comprobarFilas() {
-        // Comprobamos si hay 3 en raya en una fila.
+    public static boolean comprobarGanador() {
+        // Comprobar filas.
         for (int i = 0; i < 3; i++) {
-            if (botonPulsado == botonTablero) {
-                botonPulsado.setEnabled(false);
-
-            } else {
-                TresEnRayaUI.cambiarTurnoJugador();
+            if (!botonesTablero[i][0].getText().isEmpty()
+                    && botonesTablero[i][0].getText().equals(botonesTablero[i][1].getText())
+                    && botonesTablero[i][0].getText().equals(botonesTablero[i][2].getText())) {
+                return true;
             }
         }
 
-        return true;
-    }
-
-    // COLUMNAS:
-    public static boolean comprobarColumnas() {
+        // Comprobar columnas.
         for (int i = 0; i < 3; i++) {
-            if (botonPulsado == botonTablero) {
-                botonPulsado.setEnabled(false);
-            } else {
-                TresEnRayaUI.cambiarTurnoJugador();
+            if (!botonesTablero[0][i].getText().isEmpty()
+                    && botonesTablero[0][i].getText().equals(botonesTablero[1][i].getText())
+                    && botonesTablero[0][i].getText().equals(botonesTablero[2][i].getText())) {
+                return true;
             }
         }
 
-        return true;
-    }
-
-    private boolean comprobarGanador() {
-        if (comprobarFilas() == true && comprobarColumnas() == true) {
+        // Comprobar diagonal principal.
+        if (!botonesTablero[0][0].getText().isEmpty()
+                && botonesTablero[0][0].getText().equals(botonesTablero[1][1].getText())
+                && botonesTablero[0][0].getText().equals(botonesTablero[2][2].getText())) {
             return true;
-        } else {
-            return false;
+        }
+
+        // Comprobar diagonal secundaria.
+        if (!botonesTablero[0][2].getText().isEmpty()
+                && botonesTablero[0][2].getText().equals(botonesTablero[1][1].getText())
+                && botonesTablero[0][2].getText().equals(botonesTablero[2][0].getText())) {
+            return true;
+        }
+
+        return false;
+    }
+
+    // Método para dejar marcado los botones al ganar la partida.
+    private static void bloquearTablero() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                botonesTablero[i][j].setEnabled(false);
+            }
         }
     }
 }
