@@ -4,6 +4,7 @@ package activitats.activitat11pt4;
 import javax.swing.*;
 import static eventos.GestionEventos.turnoJugadores;
 import static interfaces.MetodosUtiles.*;
+import static tratamientoFicheros.ImplementacionFicheros.*;
 
 public class TresEnRayaUI {
 

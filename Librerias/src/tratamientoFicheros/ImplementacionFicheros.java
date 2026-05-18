@@ -1,5 +1,7 @@
 package tratamientoFicheros;
 
+import static interfaces.MetodosUtiles.*;
+
 public class ImplementacionFicheros {
 
     // Método para leer ficheros.
@@ -9,6 +11,8 @@ public class ImplementacionFicheros {
 
     // Método para escribir ficheros.
     public static void escribirFichero(String nombreFichero, boolean noSobrescribir) {
+
+
 
     }
 }

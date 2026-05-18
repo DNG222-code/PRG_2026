@@ -40,13 +40,17 @@ public class Test {
 //        new ExempleFlowLayout();
 
 //        SwingUtilities.invokeLater(() -> new ExempleBorderLayout());
-        SwingUtilities.invokeLater(() -> new ExempleGridLayout());
+//        SwingUtilities.invokeLater(() -> new ExempleGridLayout());
 
 //        Exemple1.dibuixa();
 
 //        ExempleComponents.components();
 
 //        ExempleAWT.dibuixar();
+
+        SwingUtilities.invokeLater(() -> new ExempleBoxLayout());
+
+//        Aparenca.mostraLAndF();
 
     }
 }
