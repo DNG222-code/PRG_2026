@@ -1,5 +1,7 @@
 package apunts.entornGrafic;
 
+import apunts.menus.Menus;
+
 import javax.swing.*;
 import javax.swing.SwingUtilities;
 
@@ -48,9 +50,18 @@ public class Test {
 
 //        ExempleAWT.dibuixar();
 
-        SwingUtilities.invokeLater(() -> new ExempleBoxLayout());
+//        SwingUtilities.invokeLater(() -> new ExempleBoxLayout());
 
 //        Aparenca.mostraLAndF();
 
+//        SwingUtilities.invokeLater(() -> new Selector());
+
+//        SwingUtilities.invokeLater(() -> {
+//            new Esdeveniments();
+//        });
+
+        SwingUtilities.invokeLater(() -> {
+            new Menus();
+        });
     }
 }

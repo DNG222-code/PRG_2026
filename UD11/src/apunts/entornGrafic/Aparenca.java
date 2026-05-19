@@ -19,6 +19,9 @@ public class Aparenca {
             String motif = "com.sun.java.swing.plaf.motif.MotifLookAndFeel";
 
             UIManager.setLookAndFeel(motif);
+
+            UIManager.put("Button.background", Color.CYAN);
+            UIManager.put("Button.font", new Font("Arial", Font.BOLD, 18));
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
