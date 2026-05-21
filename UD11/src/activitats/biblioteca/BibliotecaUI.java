@@ -6,7 +6,7 @@ import java.util.*;
 
 public class BibliotecaUI {
 
-    // Atributs.
+    // Atributs de sa clase.
     private JFrame frmPrincipal;
     private JPanel pnlPrincipal;
     private JTextField txtTitol;
@@ -19,7 +19,7 @@ public class BibliotecaUI {
     private JComboBox<String> cboDisponible;
     private ArrayList<Llibre> colLlibres;
     private JList<Llibre> lstLlibres;
-    private JLabel lblEstat;
+    private JLabel lblEstat = new JLabel("Sistema preparat");
     private GestorBiblioteca gestor;
     private int contadorId = 1;
 
@@ -27,6 +27,7 @@ public class BibliotecaUI {
     public BibliotecaUI(ArrayList<Llibre> colLlibres) {
         this.colLlibres = colLlibres;
         this.gestor = new GestorBiblioteca();
+        crearInterficie();
     }
 
     // Mètodes de la clase.
@@ -35,21 +36,88 @@ public class BibliotecaUI {
     }
 
     private void crearInterficie() {
+        // Cridem el mètodo de initzalitzarComponents.
+        initzialitzarComponents();
+
+        // Declarem el Frame i el Panel principal.
         frmPrincipal = new JFrame("Biblioteca");
         pnlPrincipal = new JPanel();
-        frmPrincipal.setContentPane(pnlPrincipal);
+
+        // Creem panels per cada part del programa, perquè no hi hagi remplaços.
+        JPanel pnlNorth = new JPanel();
+        JPanel pnlWest = new JPanel();
+        JPanel pnlCenter = new JPanel();
+        JPanel pnlSouth = new JPanel();
+
+        // Botó per a afegir un llibre.
+        JButton btnAfegir = new JButton("Afegir Llibre");
+
+        // Cridem els mètodes amb els botons de la part North.
+        afegirLlibre(pnlNorth, btnAfegir);
+        eliminarLlibre(pnlNorth);
+
+        // Botons principals de la part de dalt.
+        JButton btnGuardar = new JButton("Guardar");
+        pnlNorth.add(btnGuardar, BorderLayout.NORTH);
+
+        JButton btnCarregar = new JButton("Carregar");
+        pnlNorth.add(btnCarregar, BorderLayout.NORTH);
+
+        // Categories per BorderLayout WEST.
+        pnlWest.add(this.getChkNovella(), BorderLayout.WEST);
+        pnlWest.add(this.getChkCiencia(), BorderLayout.WEST);
+        pnlWest.add(this.getChkHistoria(), BorderLayout.WEST);
+        pnlWest.add(this.getChkInformatica(), BorderLayout.WEST);
+
+        // Cridem el mètode per a crear el formulari y posarlo al centre.
+        netejarFormulari(pnlCenter, btnAfegir);
+
+        // Categories per BorderLayout SOUTH.
+        pnlSouth.add(this.getLblEstat(), BorderLayout.SOUTH);
+
+        // Afegim els panels al panel principal.
+        pnlPrincipal.add(pnlNorth, BorderLayout.NORTH);
+        pnlPrincipal.add(pnlWest, BorderLayout.WEST);
+        pnlPrincipal.add(pnlCenter, BorderLayout.CENTER);
+        pnlPrincipal.add(pnlSouth, BorderLayout.SOUTH);
+
+        // Afegim el panel principal al frame principal.
+        frmPrincipal.add(pnlPrincipal);
+
+        // Funcionalitats bàsiques del frame principal.
+        frmPrincipal.setSize(600, 400);
+        frmPrincipal.setLocationRelativeTo(null);
         frmPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frmPrincipal.pack();
         frmPrincipal.setVisible(true);
+    }
+
+    private void initzialitzarComponents() {
+        // Asignem valors als components per a que no doni error de null.
+        txtTitol = new JTextField(20);
+        txtAutor = new JTextField(20);
+        txtAny = new JTextField(6);
+
+        chkNovella = new JCheckBox("Novel·la");
+        chkCiencia = new JCheckBox("Ciència");
+        chkHistoria = new JCheckBox("Història");
+        chkInformatica = new JCheckBox("Informàtica");
+
+        cboDisponible = new JComboBox<>(new String[]{"Disponible", "No disponible"});
+
+        // Declarem la llista de llibres.
+        lstLlibres = new JList<>();
+
+        // Refrescar la llista de llibres.
+        refrescarJList();
     }
 
     private void crearMenu() {
 
     }
 
-    private void afegirLlibre() {
-        JButton btnAfegir = new JButton("Afegir Llibre");
-        pnlPrincipal.add(btnAfegir, BorderLayout.NORTH);
+    private void afegirLlibre(JPanel pnlNorth, JButton btnAfegir) {
+        // Afegim el botó d'afegir llibre al North.
+        pnlNorth.add(btnAfegir, BorderLayout.NORTH);
     }
 
     private String obtenirCategoria() {
@@ -60,12 +128,24 @@ public class BibliotecaUI {
 
     }
 
-    private void eliminarLlibre() {
-
+    private void eliminarLlibre(JPanel pnlNorth) {
+        // Botó per a eliminar un llibre.
+        JButton btnEliminar = new JButton("Eliminar Llibre");
+        pnlNorth.add(btnEliminar, BorderLayout.NORTH);
     }
 
-    private void netejarFormulari() {
+    private void netejarFormulari(JPanel pnlCenter, JButton btnAfegir) {
+        // Creem un GridLayout per al Formulari.
+        GridLayout gridFormulari = new GridLayout(3, 2);
+        pnlPrincipal.setLayout(gridFormulari);
 
+        // Afegim els components al Formulari a sa part central.
+        pnlCenter.add(this.getTxtTitol(), BorderLayout.CENTER);
+        pnlCenter.add(this.getTxtAutor(), BorderLayout.CENTER);
+        pnlCenter.add(this.getTxtAny(), BorderLayout.CENTER);
+        pnlCenter.add(this.getCboDisponible(), BorderLayout.CENTER);
+        pnlCenter.add(this.getLstLlibres(), BorderLayout.CENTER);
+        pnlCenter.add(btnAfegir, BorderLayout.CENTER);
     }
 
     private void refrescarJList() {
