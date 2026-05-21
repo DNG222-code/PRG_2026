@@ -1,7 +1,8 @@
 package activitats.biblioteca;
 
 import javax.swing.*;
-import java.util.ArrayList;
+import java.awt.*;
+import java.util.*;
 
 public class BibliotecaUI {
 
@@ -34,7 +35,12 @@ public class BibliotecaUI {
     }
 
     private void crearInterficie() {
-
+        frmPrincipal = new JFrame("Biblioteca");
+        pnlPrincipal = new JPanel();
+        frmPrincipal.setContentPane(pnlPrincipal);
+        frmPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frmPrincipal.pack();
+        frmPrincipal.setVisible(true);
     }
 
     private void crearMenu() {
@@ -42,7 +48,8 @@ public class BibliotecaUI {
     }
 
     private void afegirLlibre() {
-
+        JButton btnAfegir = new JButton("Afegir Llibre");
+        pnlPrincipal.add(btnAfegir, BorderLayout.NORTH);
     }
 
     private String obtenirCategoria() {

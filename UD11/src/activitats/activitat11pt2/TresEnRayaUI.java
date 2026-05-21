@@ -15,12 +15,14 @@ public class TresEnRayaUI {
     // Pedimos el nombre del jugador por InputDialog y lo guardamos en nombreJugador.
     nombreJugador = JOptionPane.showInputDialog("Introduce el jugador que empieza: X/O");
 
+    // Comprobamos que el nombre del jugador sea correcto.
     if (nombreJugador == null || nombreJugador.isBlank()) {
         nombreJugador = "X";
     } else {
         nombreJugador = nombreJugador.toUpperCase();
     }
 
+    // Comprobamos que solo sea X o O.
     if (!"X".equals(nombreJugador) && !"O".equals(nombreJugador)) {
         nombreJugador = "X";
     }
